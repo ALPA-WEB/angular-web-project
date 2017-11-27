@@ -31,6 +31,34 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
+    title: '학회',
+    icon: 'nb-keypad',
+    link: '/pages/academy',
+    children: [
+      {
+        title: '영과일',
+        link: '/pages/academy/zero_one',
+      },
+      {
+        title: '피포',
+        link: '/pages/academy/fifo',
+      },
+      {
+        title: '알피',
+        link: '/pages/academy/alpa',
+      },
+      {
+        title: '자람',
+        link: '/pages/academy/jaram',
+      },
+      {
+        title: '하이큐브',
+        link: '/pages/academy/hycube',
+      },
+
+    ],
+  },
+  {
     title: '편의(가명)',
     icon: 'nb-keypad',
     link: '/pages/convenience',
