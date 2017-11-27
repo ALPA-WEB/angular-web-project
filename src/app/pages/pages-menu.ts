@@ -37,7 +37,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '영과일',
-        link: '/pages/academy/zero_one',
+        link: '/pages/academy/zeroone',
       },
       {
         title: '피포',

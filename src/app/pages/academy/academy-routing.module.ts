@@ -6,7 +6,7 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {Zero_oneComponent} from './zero_one/zero_one.component';
+import {ZerooneComponent} from './zeroone/zeroone.component';
 import {FifoComponent} from './fifo/fifo.component';
 import {AlpaComponent} from './alpa/alpa.component';
 import {JaramComponent} from './jaram/jaram.component';
@@ -18,8 +18,8 @@ const routes: Routes = [{
     path: '',
     component: AcadComponent,
     children: [{
-        path: 'zero_one',
-        component: Zero_oneComponent,
+        path: 'zeroone',
+        component: ZerooneComponent,
     },
     {
         path: 'fifo',

@@ -1,7 +1,7 @@
 
 import {NgModule} from '@angular/core';
 
-import {Zero_oneComponent} from './zero_one/zero_one.component';
+import {ZerooneComponent} from './zeroone/zeroone.component';
 import {FifoComponent} from './fifo/fifo.component';
 import {AlpaComponent} from './alpa/alpa.component';
 import {JaramComponent} from './jaram/jaram.component';
@@ -20,7 +20,7 @@ import { ThemeModule } from '../../@theme/theme.module';
     ],
     declarations: [
         AcadComponent,
-        Zero_oneComponent,
+        ZerooneComponent,
         FifoComponent,
         AlpaComponent,
         JaramComponent,
@@ -29,7 +29,7 @@ import { ThemeModule } from '../../@theme/theme.module';
     ],
     exports: [
         AcadComponent,
-        Zero_oneComponent,
+        ZerooneComponent,
         FifoComponent,
         AlpaComponent,
         JaramComponent,
