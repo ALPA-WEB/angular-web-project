@@ -37,7 +37,7 @@ const routes: Routes = [{
   }, {
     path: 'convenience',
     loadChildren: './convenience/convenience.module#ConvModule',
-  },{
+  }, {
     path: 'academy',
     loadChildren: './academy/academy.module#AcadModule',
   },
