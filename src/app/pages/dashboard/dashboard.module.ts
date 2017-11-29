@@ -19,12 +19,16 @@ import { SolarComponent } from './solar/solar.component';
 import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
+import {UiFeaturesModule} from '../ui-features/ui-features.module';
+import {ModalComponent} from '../ui-features/modals/modal/modal.component';
+
 
 
 @NgModule({
   imports: [
     ThemeModule,
     AngularEchartsModule,
+    UiFeaturesModule,
   ],
   declarations: [
     DashboardComponent,
