@@ -66,7 +66,7 @@ export class UserService {
 
   
   private users = {
-    null: { name: "Google SignIn!",}, //picture: 'assets/images/nick.png' 이렇게 이미지 추가해야할듯 구글로고
+    nologin: { name: 'Google SignIn!'}, //picture: 'assets/images/nick.png' 이렇게 이미지 추가해야할듯 구글로고
     nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
     eva: { name: 'Eva Moor', picture: 'assets/images/eva.png' },
     jack: { name: 'Jack Williams', picture: 'assets/images/jack.png' },

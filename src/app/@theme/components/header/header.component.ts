@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     // this.user = {name : this.afAuth.auth.currentUser};
     this.userService.getUsers()
-      .subscribe((users: any) => this.user = users.null);
+      .subscribe((users: any) => this.user = users.nologin);
   }
 
   toggleSidebar(): boolean {

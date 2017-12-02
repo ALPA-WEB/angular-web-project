@@ -19,13 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyCwshbNesxP965RfapSuQxCDxAIT9uKc0M",
-  authDomain: "test-28325.firebaseapp.com",
-  databaseURL: "https://test-28325.firebaseio.com",
-  projectId: "test-28325",
-  storageBucket: "",
-  messagingSenderId: "332220966776"
-}
+  apiKey: 'AIzaSyCwshbNesxP965RfapSuQxCDxAIT9uKc0M',
+  authDomain: 'test-28325.firebaseapp.com',
+  databaseURL: 'https://test-28325.firebaseio.com',
+  projectId: 'test-28325',
+  storageBucket: '',
+  messagingSenderId: '332220966776',
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,8 +38,7 @@ export const firebaseConfig = {
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig)
-    
+    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [AppComponent],
   providers: [
