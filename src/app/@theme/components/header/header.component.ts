@@ -13,7 +13,7 @@ import { AnalyticsService } from '../../../@core/utils/analytics.service';
   selector: 'ngx-header',
   styleUrls: ['./header.component.scss'],
   templateUrl: './header.component.html',
-  providers: [AngularFireAuth]
+  providers: [AngularFireAuth],
 })
 
 export class HeaderComponent implements OnInit {
