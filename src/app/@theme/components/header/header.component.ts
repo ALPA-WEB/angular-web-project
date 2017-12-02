@@ -76,4 +76,5 @@ export class HeaderComponent implements OnInit {
   onMenuClick($event) {
     this.log($event);
   }
+
 }

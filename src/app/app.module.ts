@@ -26,6 +26,7 @@ export const firebaseConfig = {
   projectId: "test-28325",
   storageBucket: "test-28325.appspot.com",
   messagingSenderId: "332220966776"
+
 };
 
 @NgModule({

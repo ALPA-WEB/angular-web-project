@@ -1,27 +1,42 @@
-import { Component } from '@angular/core';
+import {Component, OnChanges, SimpleChanges} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from '../ui-features/modals/modal/modal.component';
 import {ACADEMY_ITEMS} from './academy-menu';
 import {Subscription} from 'rxjs/Subscription';
 import {NbMenuItem, NbMenuService} from '@nebular/theme';
+import {AngularFireAuth} from 'angularfire2/auth';
+import * as firebase from 'firebase';
 @Component({
   selector: 'ngx-dashboard',
   styleUrls: ['./dashboard.component.scss',
   '../ui-features/tabs/tabs.component.scss'],
   templateUrl: './dashboard.component.html',
+  providers: [AngularFireAuth],
 })
 export class DashboardComponent {
   academy = 'dashboard';
   academy_menu = ACADEMY_ITEMS;
   content = '내용';
+  username: any = '사용자없음';
   protected acaClick$: Subscription;
   constructor(private modalService: NgbModal,
               protected menuService: NbMenuService,
+              public afAuth: AngularFireAuth,
               ) {
+    afAuth.authState.subscribe((user: firebase.User) => { if (user) { this.username = user.displayName; } });
+    afAuth.auth.onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        this.username = user.displayName;
+      } else {
+        this.username = '사용자없음';
+      }
+    })
     this.acaClick$ = this.menuService.onItemSelect()
         .subscribe((value: {tag: string, item: NbMenuItem}) => {
-      if (value.tag === 'dashboaard') {
-        this.content = value.item.title;
+      console.warn(value.tag);
+      if (value.tag === 'dashboard') {
+        this.content = value.item.title + this.username;
       }
     });
   }

@@ -25,7 +25,7 @@
           <nb-card size="small">
             <nb-card-header>내가 가입한 학회</nb-card-header>
             <nb-card-body>
-              <nb-menu [items]="academy_menu" [tag]="academy">
+              <nb-menu [items]="academy_menu" [tag]="academy"  *ngIf="afAuth.authState | async;">
               </nb-menu>
             </nb-card-body>
           </nb-card>
