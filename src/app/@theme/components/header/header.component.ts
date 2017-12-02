@@ -15,6 +15,7 @@ import { AnalyticsService } from '../../../@core/utils/analytics.service';
   templateUrl: './header.component.html',
   providers: [AngularFireAuth]
 })
+
 export class HeaderComponent implements OnInit {
 
 
@@ -22,7 +23,12 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [{ title: 'Profile' },
+    { title: 'Log out' },
+    {
+      title: 'Log in', link: '/pages/ui-features/buttons',
+    },
+    ];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
@@ -59,5 +65,9 @@ export class HeaderComponent implements OnInit {
 
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
+  }
+  log(val) { console.warn(val); }
+  onMenuClick($event) {
+    this.log($event);
   }
 }

@@ -3,6 +3,15 @@
 @import '~@nebular/theme/styles/global/bootstrap/breakpoints';
 
 @include nb-install-component() {
+  .btn {
+    font-size: 0.8rem;
+  }
+  .no-padding-right {
+    padding-right: 0;
+  }
+  .no-padding-left {
+    padding-left : 0;
+  }
   .solar-card nb-card-header {
     border: none;
     padding-bottom: 0;
