@@ -30,51 +30,51 @@ export class HeaderComponent implements OnInit {
         },
     ];
 
-    constructor(private sidebarService: NbSidebarService,
-                private menuService: NbMenuService,
-                private userService: UserService,
-                private analyticsService: AnalyticsService,
-                public afAuth: AngularFireAuth) {
-    }
+  constructor(private sidebarService: NbSidebarService,
+              private menuService: NbMenuService,
+              public userService: UserService,
+              private analyticsService: AnalyticsService,
+              public afAuth: AngularFireAuth) {
+  }
+  /*
+  login() {
+    // this.userService.googleLogin();
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+  logout() {
+    this.afAuth.auth.signOut();
+  }
+  */
+  ngOnInit() {
+    // if(this.afAuth.authState) {
+    // this.afAuth.authState.subscribe((user: firebase.User) => this.user = {name : user.displayName});
+    // }else{
+      //this.user = {name : "Google Sign In!!"};
+    // this.userService.getUsers()
+    //   .subscribe((users: any) => this.user = users.nologin);
+    // }
+  }
 
-    login() {
-        // this.userService.googleLogin();
-        this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    }
+  toggleSidebar(): boolean {
+    this.sidebarService.toggle(true, 'menu-sidebar');
+    return false;
+  }
 
-    logout() {
-        this.afAuth.auth.signOut();
-    }
+  toggleSettings(): boolean {
+    this.sidebarService.toggle(false, 'settings-sidebar');
+    return false;
+  }
 
-    ngOnInit() {
-        // this.user = {name : this.afAuth.auth.currentUser};
-        this.userService.getUsers()
-            .subscribe((users: any) => this.user = users.nologin);
-    }
+  goToHome() {
+    this.menuService.navigateHome();
+  }
 
-    toggleSidebar(): boolean {
-        this.sidebarService.toggle(true, 'menu-sidebar');
-        return false;
-    }
+  startSearch() {
+    this.analyticsService.trackEvent('startSearch');
+  }
+  log(val) { console.warn(val); }
+  onMenuClick($event) {
+    this.log($event);
+  }
 
-    toggleSettings(): boolean {
-        this.sidebarService.toggle(false, 'settings-sidebar');
-        return false;
-    }
-
-    goToHome() {
-        this.menuService.navigateHome();
-    }
-
-    startSearch() {
-        this.analyticsService.trackEvent('startSearch');
-    }
-
-    log(val) {
-        console.warn(val);
-    }
-
-    onMenuClick($event) {
-        this.log($event);
-    }
 }

@@ -6,6 +6,11 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
 import { DataModule } from './data/data.module';
 import { AnalyticsService } from './utils/analytics.service';
 
+
+import { UserService } from './data/users.service';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 const NB_CORE_PROVIDERS = [
   ...DataModule.forRoot().providers,
   ...NbAuthModule.forRoot({
@@ -27,11 +32,15 @@ const NB_CORE_PROVIDERS = [
 @NgModule({
   imports: [
     CommonModule,
+
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   exports: [
     NbAuthModule,
   ],
   declarations: [],
+  providers: [UserService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
