@@ -9,16 +9,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 let counter = 0;
-// interface User {
-//   uid: string;
-//   email: string;
-//   photoURL?: string;
-//   displayName?: string;
-//   favoriteColor?: string;
-// }
+interface User {
+  uid: string;
+  email: string;
+  // photoURL?: string;
+  displayName?: string;
+  // favoriteColor?: string;
+}
 @Injectable()
 export class UserService {
-  /*
+  
   user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -33,8 +33,6 @@ export class UserService {
           }
         })
   }
-  providers: [AngularFireAuth];
-  
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider()
     return this.oAuthLogin(provider);
@@ -52,7 +50,6 @@ export class UserService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL
     }
     return userRef.set(data)
   }
@@ -61,12 +58,11 @@ export class UserService {
         this.router.navigate(['/']);
     });
   }
-}*/
+}
 
-
-  
+  /*
   private users = {
-    null: { name: "Google SignIn!",}, //picture: 'assets/images/nick.png' 이렇게 이미지 추가해야할듯 구글로고
+    nologin: { name: 'Google SignIn!'}, //picture: 'assets/images/nick.png' 이렇게 이미지 추가해야할듯 구글로고
     nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
     eva: { name: 'Eva Moor', picture: 'assets/images/eva.png' },
     jack: { name: 'Jack Williams', picture: 'assets/images/jack.png' },
@@ -77,7 +73,14 @@ export class UserService {
 
   private userArray: any[];
 
+  // user: Observable<User>;
   constructor() {
+    
+    // this.afAuth.authState.subscribe((user: firebase.User) => {
+    //               console.log('user is: ' + user);
+    //               this.users = user;
+    //           });
+    
     // this.userArray = Object.values(this.users);
   }
 
@@ -94,3 +97,4 @@ export class UserService {
     return Observable.of(this.userArray[counter]);
   }
 }
+*/
