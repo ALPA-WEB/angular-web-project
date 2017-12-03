@@ -7,10 +7,10 @@
 <ng-template #auth >
 <div class="header-container"
 [class.left]="position === 'normal'"
-[class.right]="position === 'inverse'">
+[class.right]="position === 'inverse'" style="flex-grow: 8">
 <div class="logo-containter">
 <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-<div class="logo" (click)="goToHome()">ngx-<span>admin</span></div>
+<div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
 </div>
 </div>
 
