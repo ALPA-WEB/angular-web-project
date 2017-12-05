@@ -38,7 +38,7 @@ export class UserService {
     return this.oAuthLogin(provider);
   }
   private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
+    return this.afAuth.auth.signInWithRedirect(provider)
       .then((credential) => {
         this.updateUserData(credential.user)
       })
