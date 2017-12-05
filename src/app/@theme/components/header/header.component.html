@@ -19,9 +19,9 @@
  class="header-container"
  [class.right]="position === 'normal'"
  [class.left]="position === 'inverse'">
-
-<nb-action (click)="userService.signOut()" *ngIf="userService.user | async as user;"> 
-    <nb-user [menu]="userMenu" name="{{ user.displayName }}" [picture]="user?.picture"></nb-user>
+ <!-- (click)="userService.signOut()" -->
+<nb-action  *ngIf="userService.user | async as user;"> 
+    <nb-user [menu]="userMenu" name="{{ user.displayName }}" [picture]="user?.picture" (menuClick)="userService.signOut()"></nb-user>
 </nb-action> 
 
 </nb-actions>
@@ -34,7 +34,7 @@
     
 <div class="header-container" style="flex-grow: 8"
 [class.left]="position === 'normal'"
-[class.right]="position === 'inverse'">
+[class.right]="position === 'inverse'" style="flex-grow: 8">
 <div class="logo-containter">
 <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
 <div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
@@ -48,9 +48,8 @@
  [class.left]="position === 'inverse'">
 
 <nb-action (click)="userService.googleLogin()">
-<nb-user [menu]="userMenu" name="Google Sign In!!" ></nb-user>
+<!-- <i class="fa fa-google"></i> Connect Google -->
+<nb-user name="Google Sign In!!" ></nb-user>
 </nb-action> 
-
-<i class="fa fa-google"></i> Connect Google
 </nb-actions>
 </ng-template>
