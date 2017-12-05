@@ -32,12 +32,12 @@
 <!--인증안되었을 때-->
  <ng-template #guest> 
     
-<div class="header-container"
+<div class="header-container" style="flex-grow: 8"
 [class.left]="position === 'normal'"
 [class.right]="position === 'inverse'">
 <div class="logo-containter">
 <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-<div class="logo" (click)="goToHome()">ngx-<span>admin</span></div>
+<div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
 </div>
 </div>
 
