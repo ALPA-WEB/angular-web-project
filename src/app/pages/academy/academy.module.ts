@@ -12,6 +12,8 @@ import {AcadRoutingModule, routedComponents} from './academy-routing.module';
 import { ThemeModule } from '../../@theme/theme.module';
 // import {UiFeaturesModule} from '../ui-features/ui-features.module';
 
+import { AlpamanageComponent } from './alpa/alpa-management.component';
+
 @NgModule({
     imports: [
         AcadRoutingModule,
@@ -25,6 +27,7 @@ import { ThemeModule } from '../../@theme/theme.module';
         AlpaComponent,
         JaramComponent,
         HycubeComponent,
+        AlpamanageComponent,
         ...routedComponents,
     ],
     exports: [
@@ -34,6 +37,7 @@ import { ThemeModule } from '../../@theme/theme.module';
         AlpaComponent,
         JaramComponent,
         HycubeComponent,
+        AlpamanageComponent,
     ],
 
 })
