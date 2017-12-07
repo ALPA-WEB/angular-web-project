@@ -6,13 +6,15 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ZerooneComponent} from './zeroone/zeroone.component';
-import {FifoComponent} from './fifo/fifo.component';
-import {AlpaComponent} from './alpa/alpa.component';
-import {JaramComponent} from './jaram/jaram.component';
-import {HycubeComponent} from './hycube/hycube.component';
+import { ZerooneComponent } from './zeroone/zeroone.component';
+import { FifoComponent } from './fifo/fifo.component';
+import { AlpaComponent } from './alpa/alpa.component';
+import { JaramComponent } from './jaram/jaram.component';
+import { HycubeComponent } from './hycube/hycube.component';
 
-import {AcadComponent} from './academy.component';
+import { AcadComponent } from './academy.component';
+import { AlpamanageComponent } from './alpa/alpa-management.component';
+import { AlpanoticeComponent } from './alpa/alpa-notice.component';
 
 const routes: Routes = [{
     path: '',
@@ -46,4 +48,12 @@ const routes: Routes = [{
 export class AcadRoutingModule { }
 
 export const routedComponents = [
+    ZerooneComponent,
+    FifoComponent,
+    AlpaComponent,
+    JaramComponent,
+    HycubeComponent,
+    AcadComponent,
+    AlpamanageComponent,
+    AlpanoticeComponent,
 ];
