@@ -28,6 +28,7 @@ export class ContactsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+<<<<<<< HEAD
 /*
     this.userService.getUsers()
       .subscribe((users: any) => {
@@ -51,6 +52,8 @@ export class ContactsComponent implements OnInit, OnDestroy {
           {user: users.jack, type: 'mobile', time: '8:01 am'},
         ];
       });*/
+=======
+>>>>>>> 5a20f044a43c4e375522b343e7845ff6d7ea352c
   }
 
   ngOnDestroy() {

@@ -44,7 +44,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
         link: '/pages/academy/fifo',
       },
       {
-        title: '알피',
+        title: '알파',
         link: '/pages/academy/alpa',
       },
       {

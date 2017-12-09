@@ -27,21 +27,21 @@ export class UserService {
       this.user = this.afAuth.authState
         .switchMap(user => {
           if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
           } else {
-            return Observable.of(null)
+            return Observable.of(null);
           }
-        })
+        });
   }
   googleLogin() {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);
   }
   private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
+    return this.afAuth.auth.signInWithRedirect(provider)
       .then((credential) => {
-        this.updateUserData(credential.user)
-      })
+        this.updateUserData(credential.user);
+      });
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
