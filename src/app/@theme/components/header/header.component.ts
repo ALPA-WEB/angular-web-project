@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
 
     userMenu = [
         {title: 'Log out'},
-        
     ];
 
   constructor(private sidebarService: NbSidebarService,
