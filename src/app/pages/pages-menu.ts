@@ -2,18 +2,18 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'Dashboard',
+    title: '홈',
     icon: 'nb-home',
     link: '/pages/dashboard',
     home: true,
   },
   {
-    title: 'FEATURES',
+    title: '메뉴',
     group: true,
   },
   {
     title: '학생회',
-    icon: 'nb-keypad',
+    icon: 'fa fa-university fa-4',
     link: '/pages/commitee',
     children: [
       {
@@ -32,7 +32,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '학회',
-    icon: 'nb-keypad',
+    icon: 'fa fa-users fa-1',
     link: '/pages/academy',
     children: [
       {
