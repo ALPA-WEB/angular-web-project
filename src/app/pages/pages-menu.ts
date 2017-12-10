@@ -18,15 +18,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: '소융대',
-        link: '/pages/ui-features/buttons',
+        link: '/pages/concil/university',
       },
       {
         title: '소프트',
-        link: '/pages/ui-features/buttons',
+        link: '/pages/concil/software',
       },
       {
         title: 'ICT',
-        link: '/pages/ui-features/buttons',
+        link: '/pages/concil/ict',
       },
     ],
   },

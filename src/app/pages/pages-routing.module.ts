@@ -41,6 +41,10 @@ const routes: Routes = [{
     path: 'academy',
     loadChildren: './academy/academy.module#AcadModule',
   },
+    {
+      path: 'concil',
+      loadChildren: './concil/concil.module#ConcilModule',
+    },
   {
     path: '',
     redirectTo: 'dashboard',

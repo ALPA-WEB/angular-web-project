@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
 
     userMenu = [
         {title: 'Log out'},
-        
     ];
 
   constructor(private sidebarService: NbSidebarService,
@@ -72,7 +71,5 @@ export class HeaderComponent implements OnInit {
   }
   log(val) { console.warn(val); }
   onMenuClick($event) {
-    this.log($event);
   }
-
 }
