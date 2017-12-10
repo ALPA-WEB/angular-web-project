@@ -4,12 +4,12 @@
       <nb-card-header>공지사항 Inputs</nb-card-header>
       <nb-card-body>
         <div class="input-group">
-          <input type="text" placeholder="Project" class="form-control"/>
+          <input [(ngModel)]="notice.title" type="text" placeholder="Title" class="form-control"/>
         </div>
         <div class="input-group">
-          <textarea rows="10" placeholder="Text Area" class="form-control"></textarea>
+          <textarea [(ngModel)]="notice.content" rows="10" placeholder="Contents" class="form-control"></textarea>
         </div>
-        <button type="submit" class="btn btn-success">Send</button>
+        <button (click)="addNotice()" type="submit" class="btn btn-success">Send</button>
       </nb-card-body>
     </nb-card>
   </div>

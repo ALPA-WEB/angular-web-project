@@ -3,18 +3,15 @@ import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from '../../../@core/data/smart-table.service';
 
-import {AngularFireAuth} from 'angularfire2/auth';
-import {UserService} from '../../../@core/data/users.service'
 @Component({
     selector: 'ngx-alpa-manage',
-    template: `<ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="userService.googleLogin()" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
+    template: `<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
 
     styles: [`
         nb-card {
         transform: translate3d(0, 0, 0);
         }
     `],
-    providers: [AngularFireAuth],
 
 })
 export class AlpamanageComponent {
@@ -37,19 +34,19 @@ export class AlpamanageComponent {
     },
     columns: {
       duty: {
-        title: '직책',
+        title: 'duty',
         type: 'string',
       },
       name: {
-        title: '이름',
+        title: 'name',
         type: 'string',
       },
       id: {
-        title: '학번',
+        title: 'sid',
         type: 'number',
       },
       email: {
-        title: 'E-mail',
+        title: 'email',
         type: 'string',
     },
   }
@@ -58,8 +55,7 @@ export class AlpamanageComponent {
   source: LocalDataSource = new LocalDataSource();
 
   constructor(private service: SmartTableService,
-    public userService: UserService,
-    public afAuth: AngularFireAuth) {
+    ) {
 
     const data = this.service.getData();
     this.source.load(data);

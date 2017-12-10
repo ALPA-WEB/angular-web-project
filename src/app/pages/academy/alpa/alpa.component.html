@@ -3,7 +3,10 @@
     <nb-card>
       <nb-card-header>ALPA 공지사항</nb-card-header>
       <nb-card-body>
-        <button class="btn btn-success" (click)="showLargeModal()">Large modal</button>
+        <div *ngFor="let notice of notices | async" >
+        <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
+        </div>
+
       </nb-card-body>
       </nb-card>        
       <nb-card>        
