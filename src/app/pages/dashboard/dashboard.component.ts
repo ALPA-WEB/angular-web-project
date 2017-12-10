@@ -24,9 +24,9 @@ export class DashboardComponent implements OnInit {
               public afAuth: AngularFireAuth,
               ) {
     afAuth.authState.subscribe((user: firebase.User) => { if (user) { this.username = user.displayName; } });
-    afAuth.auth.onAuthStateChanged(function (user) {
-      if (user && this.username) {
-        this.username = user.displayName;
+    afAuth.auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.changeName(user.displayName);
       }
     });
     this.acaClick$ = this.menuService.onItemSelect()
@@ -48,6 +48,11 @@ export class DashboardComponent implements OnInit {
                                                     will not close it. Click × or confirmation button to close modal.`;
   }
   ngOnInit(): void {
-    this.username = '사용자없음';
+    if (this.username === '') {
+      this.username = '사용자없음';
+    }
+  }
+  changeName(userName): void {
+    this.username = userName;
   }
 }

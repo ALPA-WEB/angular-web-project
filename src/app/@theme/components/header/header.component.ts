@@ -71,7 +71,5 @@ export class HeaderComponent implements OnInit {
   }
   log(val) { console.warn(val); }
   onMenuClick($event) {
-    this.log($event);
   }
-
 }
