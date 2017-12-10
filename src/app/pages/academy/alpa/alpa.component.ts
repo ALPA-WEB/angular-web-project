@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AlpamanageComponent } from './alpa-management.component';
 import { AlpanoticeComponent } from './alpa-notice.component';
+import { AlpanoticeinputComponent } from './alpa-noticeinput.component';
 
 @Component({
     selector: 'ngx-alpa',
