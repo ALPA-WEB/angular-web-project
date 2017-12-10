@@ -8,12 +8,14 @@ import {UserService} from '../../../@core/data/users.service'
 @Component({
     selector: 'ngx-alpa-manage',
     template: `<ng2-smart-table [settings]="settings" [source]="source" (createConfirm)="userService.googleLogin()" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
+
     styles: [`
         nb-card {
         transform: translate3d(0, 0, 0);
         }
     `],
     providers: [AngularFireAuth],
+
 })
 export class AlpamanageComponent {
   settings = {
@@ -22,6 +24,7 @@ export class AlpamanageComponent {
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
       confirmCreate: true,
+
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
@@ -57,6 +60,7 @@ export class AlpamanageComponent {
   constructor(private service: SmartTableService,
     public userService: UserService,
     public afAuth: AngularFireAuth) {
+
     const data = this.service.getData();
     this.source.load(data);
   }

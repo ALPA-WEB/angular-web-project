@@ -32,7 +32,7 @@
 <!--인증안되었을 때-->
  <ng-template #guest> 
     
-<div class="header-container"
+<div class="header-container" style="flex-grow: 8"
 [class.left]="position === 'normal'"
 [class.right]="position === 'inverse'" style="flex-grow: 8">
 <div class="logo-containter">
@@ -43,7 +43,7 @@
 
 <nb-actions
  size="medium"
- class="header-container"
+ class="header-container" style="cursor: pointer"
  [class.right]="position === 'normal'"
  [class.left]="position === 'inverse'">
 

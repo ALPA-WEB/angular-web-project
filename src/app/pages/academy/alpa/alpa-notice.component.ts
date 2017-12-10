@@ -14,6 +14,7 @@ interface Notice {
   content: string;
   deadline: string;
 }
+
 @Component({
   selector: 'ngx-alpa-notice',
   template: `
@@ -25,6 +26,7 @@ interface Notice {
   </div>
   <div *ngFor="let notice of notices | async" class="modal-body">
     {{ notice.title }} {{notice.content}}
+
   </div>
   <div class="modal-footer">
     <button class="btn btn-md btn-primary" (click)="closeModal()">Save changes</button>
@@ -57,7 +59,5 @@ export class AlpanoticeComponent implements OnInit{
     closeModal() {
       this.activeModal.close();
     }
-
-    
   }
   
