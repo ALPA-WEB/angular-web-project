@@ -13,7 +13,7 @@ interface User {
   uid: string;
   email: string;
   // photoURL?: string;
-  displayName?: string;
+  displayName: string;
   // favoriteColor?: string;
 }
 @Injectable()
@@ -38,7 +38,7 @@ export class UserService {
     return this.oAuthLogin(provider);
   }
   private oAuthLogin(provider) {
-    return this.afAuth.auth.signInWithRedirect(provider)
+    return this.afAuth.auth.signInWithPopup(provider)
       .then((credential) => {
         this.updateUserData(credential.user);
       });
