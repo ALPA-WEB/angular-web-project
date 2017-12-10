@@ -15,6 +15,7 @@ import { HycubeComponent } from './hycube/hycube.component';
 import { AcadComponent } from './academy.component';
 import { AlpamanageComponent } from './alpa/alpa-management.component';
 import { AlpanoticeComponent } from './alpa/alpa-notice.component';
+import { AlpanoticeinputComponent } from './alpa/alpa-noticeinput.component';
 
 const routes: Routes = [{
     path: '',
@@ -56,4 +57,5 @@ export const routedComponents = [
     AcadComponent,
     AlpamanageComponent,
     AlpanoticeComponent,
+    AlpanoticeinputComponent,
 ];
