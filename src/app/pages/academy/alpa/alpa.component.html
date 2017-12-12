@@ -1,22 +1,25 @@
-<div class="row">
-  <div class="col-lg-12">
-    <nb-card>
-      <nb-card-header>ALPA 공지사항</nb-card-header>
-      <nb-card-body>
-        <div *ngFor="let notice of notices | async" >
-            <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
+      <div *ngIf="userService.user | async as user;" class="row">
+          <div class="col-lg-12">
+            <nb-card>
+              <nb-card-header>ALPA 공지사항</nb-card-header>
+              <nb-card-body>
+                <div *ngFor="let notice of notices | async" >
+                    <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
+                </div>
+              </nb-card-body>
+            </nb-card>
+            <nb-card>
+
+              <nb-card-body>
+                  <ngx-alpa-manage></ngx-alpa-manage>
+              </nb-card-body>
+            </nb-card>
+            <nb-card>
+                    
+              <nb-card-body *ngIf="user.master==true">
+                  <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
+              </nb-card-body>
+            </nb-card>
+          </div>
         </div>
-      </nb-card-body>
-    </nb-card>
-    <nb-card>
-      <nb-card-body>
-        <ngx-alpa-manage></ngx-alpa-manage>
-      </nb-card-body>
-    </nb-card>
-    <nb-card>
-      <nb-card-body>
-        <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
-      </nb-card-body>
-    </nb-card>
-  </div>
-</div>
+
