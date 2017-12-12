@@ -13,7 +13,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: '학생회',
-    icon: 'fa fa-university fa-4',
+    icon: 'fa fa-university fa-1',
     link: '/pages/commitee',
     children: [
       {

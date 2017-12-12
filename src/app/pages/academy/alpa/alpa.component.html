@@ -4,9 +4,8 @@
       <nb-card-header>ALPA 공지사항</nb-card-header>
       <nb-card-body>
         <div *ngFor="let notice of notices | async" >
-        <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
+            <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
         </div>
-
       </nb-card-body>
     </nb-card>
     <nb-card>
@@ -18,6 +17,6 @@
       <nb-card-body>
         <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
       </nb-card-body>
-    </nb-card>        
+    </nb-card>
   </div>
 </div>

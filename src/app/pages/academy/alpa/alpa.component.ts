@@ -19,6 +19,7 @@ interface Notice {
 }
 @Component({
     selector: 'ngx-alpa',
+    styleUrls: ['alpa.component.scss'],
     templateUrl: 'alpa.component.html',
 })
 export class AlpaComponent{
@@ -34,9 +35,9 @@ export class AlpaComponent{
 
 
   constructor(private modalService: NgbModal, private afs:AngularFirestore) { }
-    
-  
-  
+
+
+
   showLargeModal(gettitle, getcontent) {
       const activeModal = this.modalService.open(AlpanoticeComponent, { size: 'lg', container: 'nb-layout' });
       activeModal.componentInstance.modalHeader = gettitle;
