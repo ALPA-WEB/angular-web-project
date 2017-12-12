@@ -1,22 +1,42 @@
 <div class="row">
-  <div class="col-md-3">
-    <nb-card>
-      <nb-card-header>학생회 소개</nb-card-header>
-      <nb-card-body>학생회 소개 글</nb-card-body>
-    </nb-card>
-  </div>
-  <div class="col-md-3">
-    <nb-card size="small">
-      <nb-tabset>
-        <nb-tab tabTitle="집행부">
-          <span>집행</span>
-        </nb-tab>
-        <nb-tab tabTitle="총무부">
-          <span>총무</span>
-        </nb-tab>
-        <nb-tab tabTitle="홍보부">
-          <span>홍보</span>
-        </nb-tab>
-      </nb-tabset>
-    </nb-card>
+    <div class="col-md-12">
+        <nb-card>
+            <nb-card-header>공지사항</nb-card-header>
+            <nb-card-body>
+                <button _ngcontent-c19="" class="btn btn-success btn-demo">신입생환영회</button>
+                <button _ngcontent-c19="" class="btn btn-warning btn-demo">중간고사 야식사업</button>
+                <button _ngcontent-c19="" class="btn btn-primary btn-demo" (click)="showStaticModal()">Static modal</button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <nb-card>
+            <nb-card-header>학생회 소개</nb-card-header>
+            <nb-card-body>안녕하십니까 저는 제1대 컴퓨터공학과 학생회장 정치영입니다. 지금은
+            소프트웨어힉부가 되었지만 마지막 컴퓨터공학과를 이끌어가서 너무 뿌듯합니다. 정말 열심히 이끌어 가도록 하겠습니다.</nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-md-3">
+        <nb-card size="small">
+            <nb-tabset class="special">
+                <nb-tab tabTitle="집행부">
+                    <span>집행</span>
+                </nb-tab>
+                <nb-tab tabTitle="총무부">
+                    <span>총무</span>
+                </nb-tab>
+                <nb-tab tabTitle="홍보부">
+                    <span>홍보</span>
+                </nb-tab>
+            </nb-tabset>
+        </nb-card>
+    </div>
+    <div class="col-md-6">
+        <nb-card>
+            <nb-card-header>학생회비 사용 내역</nb-card-header>
+            <nb-card-body><ngx-echarts-pie></ngx-echarts-pie></nb-card-body>
+        </nb-card>
+    </div>
 </div>
