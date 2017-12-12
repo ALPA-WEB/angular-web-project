@@ -10,8 +10,7 @@ import { Component } from '@angular/core';
     template: `
         <router-outlet></router-outlet>
     `,
-    styleUrls: ['./concil.component.scss',
-        '../ui-features/tabs/tabs.component.scss'],
+    styleUrls: ['../ui-features/tabs/tabs.component.scss'],
 })
 export class ConcilComponent {
 

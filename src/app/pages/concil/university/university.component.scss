@@ -22,8 +22,11 @@
   .btn {
     font-size: 0.8rem;
   }
-  nb-tabset ul li a {
-    padding: 0;
+  nb-tabset {
+    /deep/ ul li a {
+      padding: 0.3rem;
+    }
+
   }
   .solar-card nb-card-header {
     border: none;
