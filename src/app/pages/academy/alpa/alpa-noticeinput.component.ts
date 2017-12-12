@@ -10,6 +10,13 @@ interface Notice {
   content: string;
   date: string;
 }
+interface Member {
+  duty: string;
+  name: string;
+  email: string;
+  sid: string;
+}
+
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 document.write(utc);
 @Component({
@@ -21,14 +28,24 @@ document.write(utc);
 export class AlpanoticeinputComponent implements OnInit{
       starRate = 2;
       heartRate = 4;
+      
       noticesCol: AngularFirestoreCollection<Notice>;
       notices: Observable<Notice[]>;
       noticeDoc: AngularFirestoreDocument<Notice>;
+      membersCol: AngularFirestoreCollection<Member>;
+      members: Observable<Member[]>;
+      memberDoc: AngularFirestoreDocument<Member>;
   
       notice: Notice = {
         title: "",
         content: "",
         date: ""
+      }
+      member: Member = {
+        duty: "",
+        name: "",
+        email: "",
+        sid: "",
       }
 
       
@@ -37,8 +54,10 @@ export class AlpanoticeinputComponent implements OnInit{
       private afs: AngularFirestore) { 
         }
         ngOnInit(){
-          this.noticesCol = this.afs.collection('notice').doc('ALPA').collection('notice');
+          this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
           this.notices = this.noticesCol.valueChanges();
+          this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
+          this.members = this.membersCol.valueChanges();
         }
     
         addNotice(){
@@ -50,6 +69,14 @@ export class AlpanoticeinputComponent implements OnInit{
             'title': this.notice.title,
             'content': this.notice.content,
             'date': utc,
+          })
+        }
+        addMember(){
+          this.afs.collection('academy').doc('ALPA').collection('member').add({
+            'duty': this.member.duty,
+            'name': this.member.name,
+            'email': this.member.email,
+            'sid': this.member.sid,
           })
         }
     }

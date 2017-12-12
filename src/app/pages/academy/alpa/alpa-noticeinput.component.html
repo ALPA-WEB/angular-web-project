@@ -20,14 +20,14 @@
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="inputFirstName">First Name</label>
-                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                <label for="inputDuty">직책</label>
+                <input [(ngModel)]="member.duty" type="text" class="form-control" id="inputDuty" placeholder="직책">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="inputLastName">Last Name</label>
-                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                <label for="inputName">이름</label>
+                <input [(ngModel)]="member.name" type="text" class="form-control" id="inputName" placeholder="이름">
               </div>
             </div>
           </div>
@@ -35,17 +35,17 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                <input [(ngModel)]="member.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="inputWebsite">Website</label>
-                <input type="text" class="form-control" id="inputWebsite" placeholder="Website">
+                <label for="inputSid">학번</label>
+                <input [(ngModel)]="member.sid" type="text" class="form-control" id="inputSid" placeholder="학번">
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button (click)="addMember()" type="submit" class="btn btn-primary">Submit</button>
       </nb-card-body>
     </nb-card>
   </div>
