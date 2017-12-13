@@ -3,9 +3,9 @@
         <nb-card>
             <nb-card-header>공지사항</nb-card-header>
             <nb-card-body>
-                <button _ngcontent-c19="" class="btn btn-success btn-demo">신입생환영회</button>
-                <button _ngcontent-c19="" class="btn btn-warning btn-demo">중간고사 야식사업</button>
-                <button _ngcontent-c19="" class="btn btn-primary btn-demo" (click)="showStaticModal()">Static modal</button>
+                <div *ngFor="let notice of notices | async" >
+                    <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
+                </div>
             </nb-card-body>
         </nb-card>
     </div>
@@ -43,3 +43,56 @@
         </nb-card>
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-6">
+        <nb-card>
+            <nb-card-header>공지사항 Inputs</nb-card-header>
+            <nb-card-body>
+                <div class="input-group">
+                    <input [(ngModel)]="notice.title" type="text" placeholder="Title" class="form-control"/>
+                </div>
+                <div class="input-group">
+                    <textarea [(ngModel)]="notice.content" rows="10" placeholder="Contents" class="form-control"></textarea>
+                </div>
+                <button (click)="addNotice()" type="submit" class="btn btn-success">Send</button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-lg-6">
+        <nb-card>
+            <nb-card-header>Member Inputs</nb-card-header>
+            <nb-card-body>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputDuty">직책</label>
+                            <input [(ngModel)]="member.duty" type="text" class="form-control" id="inputDuty" placeholder="직책">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputName">이름</label>
+                            <input [(ngModel)]="member.name" type="text" class="form-control" id="inputName" placeholder="이름">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputEmail">Email</label>
+                            <input [(ngModel)]="member.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="inputSid">학번</label>
+                            <input [(ngModel)]="member.sid" type="text" class="form-control" id="inputSid" placeholder="학번">
+                        </div>
+                    </div>
+                </div>
+                <button (click)="addMember()" type="submit" class="btn btn-primary">Submit</button>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
+

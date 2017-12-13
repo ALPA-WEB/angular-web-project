@@ -15,6 +15,7 @@ import {ChartsModule} from '../charts/charts.module';
 import {AngularEchartsModule} from 'ngx-echarts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartModule} from 'angular2-chartjs';
+import {UnivNoticeComponent} from './university/modals/university.notice.component';
 
 
 @NgModule({
@@ -31,9 +32,13 @@ import {ChartModule} from 'angular2-chartjs';
     declarations: [
         ...routedComponents,
         UniversityPieComponent,
+        UnivNoticeComponent,
     ],
     providers: [
       SmartTableService,
+    ],
+    entryComponents: [
+        UnivNoticeComponent,
     ],
 })
 export class ConcilModule {
