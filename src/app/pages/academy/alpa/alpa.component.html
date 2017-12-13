@@ -15,10 +15,11 @@
               </nb-card-body>
             </nb-card>
             <nb-card>
-                    
-              <nb-card-body *ngIf="user.master==true">
-                  <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
-              </nb-card-body>
+                    <div *ngFor="let master of masters | async">
+                        <nb-card-body *ngIf="user.uid==master.uid">
+                            <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
+                        </nb-card-body>
+                    </div>
             </nb-card>
           </div>
         </div>

@@ -18,6 +18,9 @@ interface Notice {
   content: string;
   date: string;
 }
+interface Master {
+  uid: string;
+}
 @Component({
     selector: 'ngx-alpa',
     styleUrls: ['alpa.component.scss'],
@@ -27,10 +30,15 @@ export class AlpaComponent{
   user: any;
   noticesCol: AngularFirestoreCollection<Notice>;
   notices: Observable<Notice[]>;
+  mastersCol: AngularFirestoreCollection<Master>;
+  masters: Observable<Master[]>;
   notice: Notice = {
     title: "",
     content: "",
     date: ""
+  }
+  master: Master = {
+    uid: "",
   }
   // user: User = {
   //   master: false,
@@ -55,6 +63,8 @@ export class AlpaComponent{
     ngOnInit(){
       this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
       this.notices = this.noticesCol.valueChanges();
+      this.mastersCol = this.afs.collection('master');
+      this.masters = this.mastersCol.valueChanges();
       // this.usersCol = this.afs.collection('user');
       // this.users = this.usersCol.valueChanges();
     }

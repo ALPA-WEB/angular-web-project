@@ -14,7 +14,6 @@ interface User {
   email: string;
   // photoURL?: string;
   displayName: string;
-  master: boolean;
   // favoriteColor?: string;
 }
 @Injectable()
@@ -51,7 +50,6 @@ export class UserService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      master: false,
     }
     return userRef.set(data)
   }
