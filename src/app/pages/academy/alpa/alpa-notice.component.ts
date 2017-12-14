@@ -29,7 +29,6 @@ export class AlpanoticeComponent implements OnInit {
 
     modalHeader: string;
     modalContent: string;
-    // modalContent = `그딴거 없어 ^^ 돌아가~~`;
 
     constructor(private activeModal: NgbActiveModal,
                 // private acdemyservice: AcademyService,

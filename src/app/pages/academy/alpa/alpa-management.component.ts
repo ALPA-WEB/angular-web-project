@@ -86,7 +86,7 @@ export class AlpamanageComponent implements OnInit{
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService,private afs: AngularFirestore,
+  constructor(private service: SmartTableService, private afs: AngularFirestore,
     ) {
 
     const data = this.service.getData();

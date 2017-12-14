@@ -101,7 +101,6 @@ export class AlpanoticeinputComponent implements OnInit{
             'sid': this.member.sid,
           });
           this.users.subscribe((data) => {for ( const el of data ) {
-            
             if(el.email == this.member.email) {
               const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${el.email}`);
               const data: User = {

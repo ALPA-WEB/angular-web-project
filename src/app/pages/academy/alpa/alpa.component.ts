@@ -2,7 +2,7 @@
 /**
  * Created by chou6 on 2017-11-20.
  */
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AlpamanageComponent } from './alpa-management.component';
@@ -26,7 +26,7 @@ interface Master {
     styleUrls: ['alpa.component.scss'],
     templateUrl: 'alpa.component.html',
 })
-export class AlpaComponent{
+export class AlpaComponent implements OnInit {
   user: any;
   noticesCol: AngularFirestoreCollection<Notice>;
   notices: Observable<Notice[]>;
@@ -49,7 +49,7 @@ export class AlpaComponent{
 
 
 
-  constructor(private modalService: NgbModal, private afs:AngularFirestore, public userService:UserService) { }
+  constructor(private modalService: NgbModal, private afs: AngularFirestore, public userService: UserService) { }
 
 
 
@@ -60,7 +60,7 @@ export class AlpaComponent{
     }
 
 
-    ngOnInit(){
+    ngOnInit() {
       this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice', ref  => ref.orderBy('date','desc'));
       this.notices = this.noticesCol.valueChanges();
       this.mastersCol = this.afs.collection('master');

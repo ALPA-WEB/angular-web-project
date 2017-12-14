@@ -13,7 +13,6 @@
 <div class="row">
     <div class="col-md-3">
         <div *ngFor="let intro of intros | async">
-
             <nb-card>
                 <nb-card-header>학생회 소개</nb-card-header>
                 <nb-card-body>{{intro.content}}</nb-card-body>
@@ -22,9 +21,9 @@
 
     </div>
     <div class="col-md-3">
-        <nb-card size="small">
-            <ngx-univcontacts></ngx-univcontacts>
-        </nb-card>
+
+        <ngx-univcontacts></ngx-univcontacts>
+
     </div>
     <div class="col-md-6">
         <nb-card>
@@ -33,56 +32,56 @@
         </nb-card>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-6">
-        <nb-card>
-            <nb-card-header>공지사항 Inputs</nb-card-header>
-            <nb-card-body>
-                <div class="input-group">
-                    <input [(ngModel)]="notice.title" type="text" placeholder="Title" class="form-control"/>
-                </div>
-                <div class="input-group">
-                    <textarea [(ngModel)]="notice.content" rows="10" placeholder="Contents" class="form-control"></textarea>
-                </div>
-                <button (click)="addNotice()" type="submit" class="btn btn-success">Send</button>
-            </nb-card-body>
-        </nb-card>
+<div class="row" *ngIf="userService.user | async as user;">
+    <div class="col-md-12">
+        <div class="row"  *ngFor="let master of masters | async">
+            <div class="col-lg-6" *ngIf="user.uid==master.uid">
+                <nb-card>
+                    <nb-card-header>공지사항 등록</nb-card-header>
+                    <nb-card-body>
+                        <div class="input-group">
+                            <input [(ngModel)]="notice.title" type="text" placeholder="Title" class="form-control"/>
+                        </div>
+                        <div class="input-group">
+                            <textarea [(ngModel)]="notice.content" rows="10" placeholder="Contents" class="form-control"></textarea>
+                        </div>
+                        <button (click)="addNotice()" type="submit" class="btn btn-success">등록</button>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+            <div class="col-lg-6" *ngIf="user.uid==master.uid">
+                <nb-card>
+                    <nb-card-header>소융대 학생회원 등록</nb-card-header>
+                    <nb-card-body>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputName">이름</label>
+                                    <input [(ngModel)]="member.name" type="text" class="form-control" id="inputName" placeholder="이름">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="inputEmail">직책</label>
+                                    <input [(ngModel)]="member.role" type="text" class="form-control" id="inputEmail" placeholder="직책">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>부서</label>
+                                    <select [(ngModel)]="selectedValue" class="form-control">
+                                        <option *ngFor="let c of department" [ngValue]="c.name">{{c.value}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button (click)="addMember()" type="submit" class="btn btn-primary">등록</button>
+                    </nb-card-body>
+                </nb-card>
+            </div>
+        </div>
     </div>
-    <div class="col-lg-6">
-        <nb-card>
-            <nb-card-header>Member Inputs</nb-card-header>
-            <nb-card-body>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputDuty">직책</label>
-                            <input [(ngModel)]="member.duty" type="text" class="form-control" id="inputDuty" placeholder="직책">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputName">이름</label>
-                            <input [(ngModel)]="member.name" type="text" class="form-control" id="inputName" placeholder="이름">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputEmail">Email</label>
-                            <input [(ngModel)]="member.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="inputSid">학번</label>
-                            <input [(ngModel)]="member.sid" type="text" class="form-control" id="inputSid" placeholder="학번">
-                        </div>
-                    </div>
-                </div>
-                <button (click)="addMember()" type="submit" class="btn btn-primary">Submit</button>
-            </nb-card-body>
-        </nb-card>
-    </div>
+
 </div>
+
 

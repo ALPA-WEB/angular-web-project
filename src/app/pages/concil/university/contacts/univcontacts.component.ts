@@ -28,7 +28,6 @@ export class UnivContactsComponent implements OnInit, OnDestroy {
   Execution: AngularFirestoreCollection<User>;
 
 
-
   constructor(private userService: UserService,
               private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,

@@ -43,13 +43,10 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
       this.piedatas.name = el.name;
       this.outcome_value.push(this.piedatas);
 
-      alert("a" + this.outcome_value);
-      alert("as" + this.piedatas.value);
+
       // this.outcome_value.push({name:el.name, value:el.value});
 
     } });
-
-    alert("a" + this.outcome_value);
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
