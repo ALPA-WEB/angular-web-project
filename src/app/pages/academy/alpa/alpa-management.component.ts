@@ -19,6 +19,7 @@ interface Member {
   styleUrls: ['alpa-management.component.scss'],
   template: `
   <div class="w3-container">
+    <h3>ALPA 회원 정보</h3>
     <table class="w3-table-all w3-hoverable">
       <thead>
         <tr class="w3-light-grey">
