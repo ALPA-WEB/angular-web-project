@@ -8,17 +8,14 @@
         </div>
       </nb-card-body>
     </nb-card>
-    <nb-card>  
+    <nb-card>
+      <nb-card-header>ALPA 회원 정보</nb-card-header>
       <nb-card-body>
-        <ngx-alpa-manage></ngx-alpa-manage>
+        <ngx-alpa-manage class="col-lg-12"></ngx-alpa-manage>
       </nb-card-body>
     </nb-card>
-    <nb-card>
-      <div *ngFor="let master of masters | async">
-        <nb-card-body *ngIf="user.uid==master.uid">
-          <ngx-alpa-noticeinputs></ngx-alpa-noticeinputs>
-        </nb-card-body>
-      </div>
-    </nb-card>
+    <div *ngFor="let master of masters | async">
+      <ngx-alpa-noticeinputs *ngIf="user.uid==master.uid"></ngx-alpa-noticeinputs>
+    </div>
   </div>
 </div>
