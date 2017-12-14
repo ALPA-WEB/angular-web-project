@@ -50,13 +50,14 @@ export class DashboardComponent implements OnInit {
   academy_menu = ACADEMY_ITEMS;
   content = '내용';
   username: any;
+  useremail: any;
   protected acaClick$: Subscription;
   constructor(private modalService: NgbModal,
               protected menuService: NbMenuService,
               public afAuth: AngularFireAuth,
               private afs: AngularFirestore,
               ) {
-    afAuth.authState.subscribe((user: firebase.User) => { if (user) { this.username = user.displayName; } });
+    afAuth.authState.subscribe((user: firebase.User) => { if (user) { this.username = user.displayName; this.useremail = user.email} });
     afAuth.auth.onAuthStateChanged((user) => {
       if (user) {
         this.changeName(user.displayName);
@@ -81,26 +82,31 @@ export class DashboardComponent implements OnInit {
                                                     will not close it. Click × or confirmation button to close modal.`;
   }
   ngOnInit(): void {
-    
+    for(var i = 0; i < ACADEMY_ITEMS.length; i++) {
+      ACADEMY_ITEMS.pop();
+    }
     this.academysCol = this.afs.collection('users');
     this.academys = this.academysCol.valueChanges();
     this.acaSubscription = this.academys.subscribe((data) => { for ( const el of data ) {
-      if(el.ALPA){
-        this.item.title = "ALPA";
-        ACADEMY_ITEMS.push(this.item);
-      }if(el.HYCUBE){
-        this.item.title = "HYCUBE";
-        ACADEMY_ITEMS.push(this.item);
-      }if(el.JARAM){
-        this.item.title = "JARAM";
-        ACADEMY_ITEMS.push(this.item);
-      }if(el.FIFO){
-        this.item.title = "FIFO";
-        ACADEMY_ITEMS.push(this.item);
-      }if(el.ZERONE){
-        this.item.title = "ZERONE";
-        ACADEMY_ITEMS.push(this.item);
+      if(this.useremail == el.email) {
+        if(el.ALPA){
+          this.item.title = "ALPA";
+          ACADEMY_ITEMS.push(this.item);
+        }if(el.HYCUBE){
+          this.item.title = "HYCUBE";
+          ACADEMY_ITEMS.push(this.item);
+        }if(el.JARAM){
+          this.item.title = "JARAM";
+          ACADEMY_ITEMS.push(this.item);
+        }if(el.FIFO){
+          this.item.title = "FIFO";
+          ACADEMY_ITEMS.push(this.item);
+        }if(el.ZERONE){
+          this.item.title = "ZERONE";
+          ACADEMY_ITEMS.push(this.item);
+        }
       }
+      
     } });
 
     ACADEMY_ITEMS.push()

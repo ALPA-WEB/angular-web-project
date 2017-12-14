@@ -61,7 +61,7 @@ export class AlpaComponent{
 
 
     ngOnInit(){
-      this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice', ref  => ref.orderBy('date','asc'));
+      this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice', ref  => ref.orderBy('date','desc'));
       this.notices = this.noticesCol.valueChanges();
       this.mastersCol = this.afs.collection('master');
       this.masters = this.mastersCol.valueChanges();

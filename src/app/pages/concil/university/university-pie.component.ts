@@ -4,7 +4,7 @@ import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firesto
 import {Observable} from 'rxjs/Observable';
 interface PieData {
   name: string;
-  value: string;
+  value: number;
 }
 @Component({
   selector: 'ngx-echarts-pie',
@@ -13,13 +13,25 @@ interface PieData {
   `,
 })
 export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy {
+
   options: any = {};
   themeSubscription: any;
   pieSubscription: any;
   piedataCol: AngularFirestoreCollection<PieData>;
   piedata: Observable<PieData[]>;
   outcome_name: string[] = [];
-  outcome_value: Object[] = [];
+  outcome_value: PieData[] = [];
+  piedatas: PieData = {
+    value: 0,
+    name: '',
+  }
+
+  test: PieData[] = [
+    { value: 335, name: 'Germany' },
+    { value: 1548, name: 'USA' },
+  ]
+
+  
   constructor(private theme: NbThemeService, private afs: AngularFirestore) {
   }
   ngOnInit(): void {
@@ -27,8 +39,17 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
     this.piedata = this.piedataCol.valueChanges();
     this.pieSubscription = this.piedata.subscribe((data) => { for ( const el of data ) {
       this.outcome_name.push(el.name);
-      this.outcome_value.push({value: parseInt(el.value, 10), name: el.name });
+      this.piedatas.value = el.value;
+      this.piedatas.name = el.name;
+      this.outcome_value.push(this.piedatas);
+
+      alert("a" + this.outcome_value);
+      alert("as" + this.piedatas.value);
+      // this.outcome_value.push({name:el.name, value:el.value});
+
     } });
+
+    alert("a" + this.outcome_value);
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
