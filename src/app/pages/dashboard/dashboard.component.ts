@@ -82,34 +82,37 @@ export class DashboardComponent implements OnInit {
                                                     will not close it. Click × or confirmation button to close modal.`;
   }
   ngOnInit(): void {
-    for(var i = 0; i < ACADEMY_ITEMS.length; i++) {
-      ACADEMY_ITEMS.pop();
-    }
+    
     this.academysCol = this.afs.collection('users');
     this.academys = this.academysCol.valueChanges();
+    
     this.acaSubscription = this.academys.subscribe((data) => { for ( const el of data ) {
+      // alert(this.useremail + "|" + el.email);
       if(this.useremail == el.email) {
-        if(el.ALPA){
+        // alert("In" + this.useremail + "|" + el.email);
+
+        for(var i = 0; i < ACADEMY_ITEMS.length; i++) {
+          ACADEMY_ITEMS.pop();
+        }
+        if(el.ALPA===true){
           this.item.title = "ALPA";
-          ACADEMY_ITEMS.push(this.item);
-        }if(el.HYCUBE){
+          ACADEMY_ITEMS.push({title:"ALPA"});
+        }if(el.HYCUBE===true){
           this.item.title = "HYCUBE";
-          ACADEMY_ITEMS.push(this.item);
-        }if(el.JARAM){
+          ACADEMY_ITEMS.push({title:"HYCUBE"});
+        }if(el.JARAM===true){
           this.item.title = "JARAM";
-          ACADEMY_ITEMS.push(this.item);
-        }if(el.FIFO){
+          ACADEMY_ITEMS.push({title:"JARAM"});
+        }if(el.FIFO===true){
           this.item.title = "FIFO";
-          ACADEMY_ITEMS.push(this.item);
-        }if(el.ZERONE){
+          ACADEMY_ITEMS.push({title:"FIFO"});
+        }if(el.ZERONE===true){
           this.item.title = "ZERONE";
-          ACADEMY_ITEMS.push(this.item);
+          ACADEMY_ITEMS.push({title:"ZERONE"});
         }
       }
-      
     } });
 
-    ACADEMY_ITEMS.push()
     if (this.username === '') {
       this.username = '사용자없음';
     }
