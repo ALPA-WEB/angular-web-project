@@ -1,0 +1,9 @@
+@import '../../../@theme/styles/themes';
+@import '~@nebular/theme/styles/global/bootstrap/buttons';
+
+@include nb-install-component() {
+
+  button {
+    margin: 0.5rem;
+  }
+}

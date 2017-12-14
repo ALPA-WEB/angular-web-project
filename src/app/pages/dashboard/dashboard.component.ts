@@ -82,7 +82,9 @@ export class DashboardComponent implements OnInit {
                                                     will not close it. Click × or confirmation button to close modal.`;
   }
   ngOnInit(): void {
-    
+    for(var i = 0; i < ACADEMY_ITEMS.length; i++) {
+      ACADEMY_ITEMS.pop();
+    }
     this.academysCol = this.afs.collection('users');
     this.academys = this.academysCol.valueChanges();
     
