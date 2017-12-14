@@ -4,9 +4,6 @@
             <nb-card-header>공지사항</nb-card-header>
             <nb-card-body>
                 <div *ngFor="let notice of notices | async" class="d-inline">
-            <nb-card-body class="notices">
-                <div *ngFor="let notice of notices | async" >
-
                     <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
                 </div>
             </nb-card-body>
@@ -15,13 +12,13 @@
 </div>
 <div class="row">
     <div class="col-md-3">
-            <div *ngFor="let intro of intros | async">
+        <div *ngFor="let intro of intros | async">
 
-        <nb-card>
-            <nb-card-header>학생회 소개</nb-card-header>
-                    <nb-card-body>{{intro.content}}</nb-card-body>
-        </nb-card>
-    </div>
+            <nb-card>
+                <nb-card-header>학생회 소개</nb-card-header>
+                <nb-card-body>{{intro.content}}</nb-card-body>
+            </nb-card>
+        </div>
 
     </div>
     <div class="col-md-3">
@@ -88,3 +85,4 @@
         </nb-card>
     </div>
 </div>
+
