@@ -3,7 +3,7 @@
         <nb-card>
             <nb-card-header>공지사항</nb-card-header>
             <nb-card-body>
-                <div *ngFor="let notice of notices | async" >
+                <div *ngFor="let notice of notices | async" class="d-inline">
                     <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
                 </div>
             </nb-card-body>
@@ -23,17 +23,7 @@
     </div>
     <div class="col-md-3">
         <nb-card size="small">
-            <nb-tabset class="special">
-                <nb-tab tabTitle="집행부">
-                    <span>집행</span>
-                </nb-tab>
-                <nb-tab tabTitle="총무부">
-                    <span>총무</span>
-                </nb-tab>
-                <nb-tab tabTitle="홍보부">
-                    <span>홍보</span>
-                </nb-tab>
-            </nb-tabset>
+            <ngx-univcontacts></ngx-univcontacts>
         </nb-card>
     </div>
     <div class="col-md-6">
