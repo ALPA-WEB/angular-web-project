@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <nb-card>
             <nb-card-header>공지사항</nb-card-header>
-            <nb-card-body>
+            <nb-card-body class="notices">
                 <div *ngFor="let notice of notices | async" >
                     <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
                 </div>
@@ -13,13 +13,13 @@
 <div class="row">
     <div class="col-md-3">
             <div *ngFor="let intro of intros | async">
-                    
+
         <nb-card>
             <nb-card-header>학생회 소개</nb-card-header>
                     <nb-card-body>{{intro.content}}</nb-card-body>
         </nb-card>
     </div>
-    
+
     </div>
     <div class="col-md-3">
         <nb-card size="small">
@@ -95,4 +95,3 @@
         </nb-card>
     </div>
 </div>
-
