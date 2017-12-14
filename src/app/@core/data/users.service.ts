@@ -15,9 +15,14 @@ interface User {
   // photoURL?: string;
   displayName: string;
   // favoriteColor?: string;
+  ALPA: boolean;HYCUBE: boolean;
+  JARAM: boolean;
+  ZERONE: boolean;
+  FIFO: boolean;
 }
+
 @Injectable()
-export class UserService {
+export class UserService {    usercom: any;
   
   user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
@@ -27,7 +32,7 @@ export class UserService {
       this.user = this.afAuth.authState
         .switchMap(user => {
           if (user) {
-            return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+            return this.afs.doc<User>(`users/${user.email}`).valueChanges();
           } else {
             return Observable.of(null);
           }
@@ -45,13 +50,24 @@ export class UserService {
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.email}`);
+    this.usercom = userRef.valueChanges();
     const data: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
+      ALPA: false,HYCUBE: false,
+      JARAM: false,
+      ZERONE: false,
+      FIFO: false,
     }
-    return userRef.set(data)
+      
+    if(user.uid == this.usercom.uid){
+
+      return null;
+    }else{
+return userRef.set(data);
+    }
   }
   signOut() {
     this.afAuth.auth.signOut().then(() => {
@@ -59,42 +75,3 @@ export class UserService {
     });
   }
 }
-
-  /*
-  private users = {
-    nologin: { name: 'Google SignIn!'}, //picture: 'assets/images/nick.png' 이렇게 이미지 추가해야할듯 구글로고
-    nick: { name: 'Nick Jones', picture: 'assets/images/nick.png' },
-    eva: { name: 'Eva Moor', picture: 'assets/images/eva.png' },
-    jack: { name: 'Jack Williams', picture: 'assets/images/jack.png' },
-    lee: { name: 'Lee Wong', picture: 'assets/images/lee.png' },
-    alan: { name: 'Alan Thompson', picture: 'assets/images/alan.png' },
-    kate: { name: 'Kate Martinez', picture: 'assets/images/kate.png' },
-  };
-
-  private userArray: any[];
-
-  // user: Observable<User>;
-  constructor() {
-    
-    // this.afAuth.authState.subscribe((user: firebase.User) => {
-    //               console.log('user is: ' + user);
-    //               this.users = user;
-    //           });
-    
-    // this.userArray = Object.values(this.users);
-  }
-
-  getUsers(): Observable<any> {
-    return Observable.of(this.users);
-  }
-
-  getUserArray(): Observable<any[]> {
-    return Observable.of(this.userArray);
-  }
-
-  getUser(): Observable<any> {
-    counter = (counter + 1) % this.userArray.length;
-    return Observable.of(this.userArray[counter]);
-  }
-}
-*/

@@ -61,18 +61,13 @@ export class AlpaComponent{
 
 
     ngOnInit(){
-      this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
+      this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice', ref  => ref.orderBy('date','asc'));
       this.notices = this.noticesCol.valueChanges();
       this.mastersCol = this.afs.collection('master');
       this.masters = this.mastersCol.valueChanges();
+      
       // this.usersCol = this.afs.collection('user');
       // this.users = this.usersCol.valueChanges();
     }
 
-    // isMaster(){
-    //   if(this.userService.user.master){
-    //       return true;
-    //   }
-    //   return false;
-    // }
 }

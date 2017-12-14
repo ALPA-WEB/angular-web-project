@@ -18,6 +18,7 @@ interface Member {
   // template: `<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
   styleUrls: ['alpa-management.component.scss'],
   template: `
+  <div class="w3-container">
     <table class="w3-table-all w3-hoverable">
       <thead>
         <tr class="w3-light-grey">
@@ -35,7 +36,8 @@ interface Member {
           <td>{{member.email}}</td>
         </tr> 
       </tbody>
-    </table>`,
+    </table>
+  </div>`,
 })
 export class AlpamanageComponent implements OnInit{
   membersCol: AngularFirestoreCollection<Member>;

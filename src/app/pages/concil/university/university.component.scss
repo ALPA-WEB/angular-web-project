@@ -44,4 +44,10 @@
       height: nb-theme(card-height-medium);
     }
   }
+  .notices{
+    display: flex;
+  }
+  button{
+    margin: .5rem;
+  }
 }
