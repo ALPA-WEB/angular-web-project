@@ -4,6 +4,7 @@ import { AlpanoticeComponent } from './alpa-notice.component';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
+import { UserService } from '../../../@core/data/users.service';
 
 interface Notice {
   title: string;
@@ -15,6 +16,16 @@ interface Member {
   name: string;
   email: string;
   sid: string;
+}
+interface User{
+  ALPA: boolean;
+  uid: string;
+  email: string;
+  displayName: string;
+  HYCUBE: boolean;
+  JARAM: boolean;
+  ZERONE: boolean;
+  FIFO: boolean;
 }
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
@@ -29,10 +40,11 @@ export class AlpanoticeinputComponent implements OnInit{
       heartRate = 4;
       noticesCol: AngularFirestoreCollection<Notice>;
       notices: Observable<Notice[]>;
-      noticeDoc: AngularFirestoreDocument<Notice>;
       membersCol: AngularFirestoreCollection<Member>;
       members: Observable<Member[]>;
-      memberDoc: AngularFirestoreDocument<Member>;
+      usersCol: AngularFirestoreCollection<User>;
+      users: Observable<User[]>;
+      userSubscription: any;
       notice: Notice = {
         title: "",
         content: "",
@@ -44,14 +56,31 @@ export class AlpanoticeinputComponent implements OnInit{
         email: "",
         sid: "",
       };
+      
+      user: User = {
+        ALPA: false,
+        uid: "",
+        email: "",
+        displayName: "",
+        HYCUBE: false,
+        JARAM: false,
+        ZERONE: false,
+        FIFO: false,
+      };
     constructor(
         // private acdemyservice: AcademyService,
-      private afs: AngularFirestore) {}
+      private afs: AngularFirestore, public userService: UserService) {
+       
+      }
         ngOnInit() {
           this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
           this.notices = this.noticesCol.valueChanges();
           this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
           this.members = this.membersCol.valueChanges();
+          this.usersCol = this.afs.collection('users');
+          this.users = this.usersCol.valueChanges();
+          
+            
         }
         addNotice() {
           // this.afs.collection('notice').add({
@@ -71,6 +100,24 @@ export class AlpanoticeinputComponent implements OnInit{
             'email': this.member.email,
             'sid': this.member.sid,
           });
+          this.users.subscribe((data) => {for ( const el of data ) {
+            
+            if(el.email == this.member.email) {
+              const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${el.email}`);
+              const data: User = {
+                uid: el.uid,
+                email: el.email,
+                displayName: el.displayName,
+                ALPA: true,
+                HYCUBE: false,
+                JARAM: false,
+                ZERONE: false,
+                FIFO: false,
+              }
+              userRef.update(data);
+            }
+          }});
+            
         }
     }
 
