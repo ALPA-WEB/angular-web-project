@@ -61,4 +61,10 @@ export class UniversityComponent implements OnInit {
         activeModal.componentInstance.modalHeader = gettitle;
         activeModal.componentInstance.modalContent = getcontent;
     }
+    addNotice() {
+        this.afs.collection('studentCouncil').doc('university').collection('notice').add({
+            'title': this.notice.title,
+            'content': this.notice.content,
+        });
+    }
 }
