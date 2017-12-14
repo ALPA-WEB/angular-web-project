@@ -77,7 +77,6 @@ export class UniversityComponent implements OnInit {
         if (!this.selectedValue) {
             return;
         }
-        console.warn(this.selectedValue);
         this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
             .collection(this.selectedValue).add({
             'name': this.member.name,
