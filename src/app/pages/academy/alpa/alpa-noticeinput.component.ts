@@ -62,15 +62,15 @@ export class AlpanoticeinputComponent implements OnInit{
             'title': this.notice.title,
             'content': this.notice.content,
             'date': utc,
-          })
+          });
         }
-        addMember(){
+        addMember() {
           this.afs.collection('academy').doc('ALPA').collection('member').add({
             'duty': this.member.duty,
             'name': this.member.name,
             'email': this.member.email,
             'sid': this.member.sid,
-          })
+          });
         }
     }
 
