@@ -2,10 +2,8 @@
 @import '~@nebular/theme/styles/global/bootstrap/buttons';
 
 @include nb-install-component() {
-  nb-card-body{
-    display: flex;
-  }
-  button{
-    margin: .5rem;
+
+  button {
+    margin: 0.5rem;
   }
 }

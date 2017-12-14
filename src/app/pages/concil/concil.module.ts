@@ -16,6 +16,7 @@ import {AngularEchartsModule} from 'ngx-echarts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartModule} from 'angular2-chartjs';
 import {UnivNoticeComponent} from './university/modals/university.notice.component';
+import {UnivContactsComponent} from './university/contacts/univcontacts.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {UnivNoticeComponent} from './university/modals/university.notice.compone
         ...routedComponents,
         UniversityPieComponent,
         UnivNoticeComponent,
+        UnivContactsComponent,
     ],
     providers: [
       SmartTableService,

@@ -14,13 +14,13 @@
     height: nb-theme(card-height-medium);
     width: 100%;
   }
-
   /deep/ .echart {
     height: 100%;
     width: 100%;
   }
   .btn {
     font-size: 0.8rem;
+    margin-right: 0.1em;
   }
   nb-tabset {
     /deep/ ul li a {

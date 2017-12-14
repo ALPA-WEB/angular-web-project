@@ -1,0 +1,19 @@
+<nb-card [size]="breakpoint.width >= breakpoints.xxxl || breakpoint.width < breakpoints.md ? 'large' : 'xlarge'">
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="총무부">
+      <div class="contact" *ngFor="let c of finances | async">
+        <nb-user [name]="c.name" [title]="c.role" size="large"></nb-user>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="집행부">
+      <div class="contact" *ngFor="let c of executions | async">
+        <nb-user [name]="c.name" [title]="c.role" size="large"></nb-user>
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="홍보부">
+      <div class="contact" *ngFor="let c of advertisers | async">
+        <nb-user [name]="c.name" [title]="c.role" size="large"></nb-user>
+      </div>
+    </nb-tab>
+  </nb-tabset>
+</nb-card>
