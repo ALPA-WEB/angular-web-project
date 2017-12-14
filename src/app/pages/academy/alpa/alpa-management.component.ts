@@ -14,36 +14,30 @@ interface Member {
   sid: string;
 }
 @Component({
-    selector: 'ngx-alpa-manage',
-    // template: `<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
-    template: `<table class="type11">
-    <thead>
-    <tr>
-        <th scope="cols">직책</th>
-        <th scope="cols">이름</th>
-        <th scope="cols">학번</th>
-        <th scope="cols">이메일</th>
+  selector: 'ngx-alpa-manage',
+  // template: `<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
+  styleUrls: ['alpa-management.component.scss'],
+  template: `
+  <div class="w3-container">
+    <table class="w3-table-all w3-hoverable">
+      <thead>
+        <tr class="w3-light-grey">
+          <th scope="cols">직책</th>
+          <th scope="cols">이름</th>
+          <th scope="cols">학번</th>
+          <th scope="cols">이메일</th>
         </tr>
-    </thead>
-    <tbody>
-    <div *ngFor="let member of members | async" >
-    <tr>
-    <td>{{member.duty}}</td>
-    <td>{{member.name}}</td>
-    <td>{{member.sid}}</td>
-    <td>{{member.email}}</td>
-</tr> 
-    </div>
-    
-    </tbody>
-</table>`,
-    
-    styles: [`
-        nb-card {
-        transform: translate3d(0, 0, 0);
-        }
-    `],
-
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members | async" >
+          <td>{{member.duty}}</td>
+          <td>{{member.name}}</td>
+          <td>{{member.sid}}</td>
+          <td>{{member.email}}</td>
+        </tr> 
+      </tbody>
+    </table>
+  </div>`,
 })
 export class AlpamanageComponent implements OnInit{
   membersCol: AngularFirestoreCollection<Member>;
