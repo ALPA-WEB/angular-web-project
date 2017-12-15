@@ -4,9 +4,6 @@
             <nb-card-header>공지사항</nb-card-header>
             <nb-card-body>
                 <div *ngFor="let notice of notices | async" class="d-inline">
-            <nb-card-body class="notices">
-                <div *ngFor="let notice of notices | async" >
-
                     <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
                 </div>
             </nb-card-body>

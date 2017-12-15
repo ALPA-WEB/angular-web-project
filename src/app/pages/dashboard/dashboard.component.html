@@ -3,11 +3,10 @@
     <nb-card size="small">
       <nb-tabset>
         <nb-tab tabTitle="소융">
-          <div _ngcontent-c19="" class="container-btn">
-            <button _ngcontent-c19="" class="btn btn-success btn-demo">신입생환영회</button>
-            <button _ngcontent-c19="" class="btn btn-warning btn-demo">중간고사 야식사업</button>
-            <button _ngcontent-c19="" class="btn btn-primary btn-demo" (click)="showStaticModal()">Static modal</button>
+          <div *ngFor="let notice of notices | async" class="d-inline">
+              <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
           </div>
+          <button _ngcontent-c19="" class="btn btn-primary btn-demo" (click)="showStaticModal()">Static modal</button>
         </nb-tab>
         <nb-tab tabTitle="소프트">
           <span>Content #2</span>
