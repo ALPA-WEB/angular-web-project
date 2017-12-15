@@ -21,10 +21,7 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   piedata: Observable<PieData[]>;
   outcome_name: string[] = [];
   outcome_value: PieData[] = [];
-  piedatas: PieData = {
-    value: 0,
-    name: '',
-  };
+  
 
   test: PieData[] = [
     { value: 335, name: 'Germany' },
@@ -33,17 +30,20 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   constructor(private theme: NbThemeService, private afs: AngularFirestore) {
   }
   ngOnInit(): void {
-    this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
-    this.piedata = this.piedataCol.valueChanges();
-    this.pieSubscription = this.piedata.subscribe((data) => {
-      for ( let el of data ) {
-      this.outcome_name.push(el.name);
-      this.piedatas.value = el.value;
-      this.piedatas.name = el.name;
-      this.outcome_value.push(this.piedatas);
-      // this.outcome_value.push({name: 'el.name', value: el.value});
-alert(this.outcome_value);
-    } });
+//     this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
+//     this.piedata = this.piedataCol.valueChanges();
+//     this.pieSubscription = this.piedata.subscribe((data) => {
+//       for(var i = 0; i < this.outcome_value.length; i++) {
+//         this.outcome_value.pop();
+//       }
+//       for ( const el of data ) {
+//       this.outcome_name.push(el.name);
+//       this.piedatas.value = el.value;
+//       this.piedatas.name = el.name;
+//       this.outcome_value.push(this.piedatas);
+//       // this.outcome_value.push({name: 'el.name', value: el.value});
+// // alert(this.outcome_value);
+//     } });
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
@@ -55,11 +55,16 @@ alert(this.outcome_value);
       this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
       this.piedata = this.piedataCol.valueChanges();
       this.pieSubscription = this.piedata.subscribe((data) => {
-        for ( let el of data ) {
+        for(var i = 0; i < this.outcome_value.length; i++) {
+          this.outcome_value.pop();
+        }
+        
+        for ( const el of data ) {
         this.outcome_name.push(el.name);
-        this.piedatas.value = el.value;
-        this.piedatas.name = el.name;
-        this.outcome_value.push(this.piedatas);
+        // this.piedatas.value = el.value;
+        // this.piedatas.name = el.name;
+        const piedata = {value: el.value, name: el.name};
+        this.outcome_value.push(piedata);
       
       this.options = {
         backgroundColor: echarts.bg,
