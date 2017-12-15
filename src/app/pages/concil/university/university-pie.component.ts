@@ -47,21 +47,18 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
         // this.outcome_value.push({name: 'el.name', value: el.value});
-      console.warn(this.outcome_value);
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
       this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
       this.piedata = this.piedataCol.valueChanges();
       this.pieSubscription = this.piedata.subscribe((data) => {
-        for(var i = 0; i < this.outcome_value.length; i++) {
-          this.outcome_value.pop();
-        }
+        this.outcome_value = [];
+        console.log(this.outcome_value);
         for ( const el of data ) {
         this.outcome_name.push(el.name);
-        // this.piedatas.value = el.value;
-        // this.piedatas.name = el.name;
         const piedata = {value: el.value, name: el.name};
         this.outcome_value.push(piedata);
+        console.log(this.outcome_value);
       this.options = {
         backgroundColor: echarts.bg,
         color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
