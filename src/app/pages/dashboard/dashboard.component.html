@@ -6,7 +6,6 @@
           <div *ngFor="let notice of notices | async" class="d-inline">
               <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
           </div>
-          <button _ngcontent-c19="" class="btn btn-primary btn-demo" (click)="showStaticModal()">Static modal</button>
         </nb-tab>
         <nb-tab tabTitle="소프트">
           <span>Content #2</span>
