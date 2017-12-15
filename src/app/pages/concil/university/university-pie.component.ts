@@ -41,15 +41,26 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
       this.piedatas.value = el.value;
       this.piedatas.name = el.name;
       this.outcome_value.push(this.piedatas);
-      // this.outcome_value.push({name:el.name, value:el.value});
-
+      // this.outcome_value.push({name: 'el.name', value: el.value});
+alert(this.outcome_value);
     } });
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
+      
+        // this.outcome_value.push({name: 'el.name', value: el.value});
       console.warn(this.outcome_value);
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
+      this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
+      this.piedata = this.piedataCol.valueChanges();
+      this.pieSubscription = this.piedata.subscribe((data) => {
+        for ( let el of data ) {
+        this.outcome_name.push(el.name);
+        this.piedatas.value = el.value;
+        this.piedatas.name = el.name;
+        this.outcome_value.push(this.piedatas);
+      
       this.options = {
         backgroundColor: echarts.bg,
         color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
@@ -65,13 +76,14 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
             color: echarts.textColor,
           },
       },
+      
         series: [
           {
             name: 'Countries',
             type: 'pie',
             radius: '80%',
             center: ['50%', '50%'],
-            data: this.test,
+            data: this.outcome_value,
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
@@ -96,10 +108,13 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
           },
         ],
       };
+    } });
     });
+    
   }
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
+  
 }
