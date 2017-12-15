@@ -37,10 +37,10 @@
                     <nb-card-header>공지사항 등록</nb-card-header>
                     <nb-card-body>
                         <div class="input-group">
-                            <input [(ngModel)]="notice.title" type="text" placeholder="Title" class="form-control"/>
+                            <input [(ngModel)]="notice.title" type="text" placeholder="제목" class="form-control"/>
                         </div>
                         <div class="input-group">
-                            <textarea [(ngModel)]="notice.content" rows="10" placeholder="Contents" class="form-control"></textarea>
+                            <textarea [(ngModel)]="notice.content" rows="10" placeholder="내용" class="form-control"></textarea>
                         </div>
                         <button (click)="addNotice()" type="submit" class="btn btn-success">등록</button>
                     </nb-card-body>

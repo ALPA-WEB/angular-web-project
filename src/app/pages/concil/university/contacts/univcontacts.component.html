@@ -1,5 +1,5 @@
-<nb-card [size]="breakpoint.width >= breakpoints.xxxl || breakpoint.width < breakpoints.md ? 'large' : 'xlarge'">
-  <nb-tabset fullWidth>
+<nb-card>
+  <nb-tabset>
     <nb-tab tabTitle="총무부">
       <div class="contact" *ngFor="let c of finances | async">
         <nb-user [name]="c.name" [title]="c.role" size="large"></nb-user>
