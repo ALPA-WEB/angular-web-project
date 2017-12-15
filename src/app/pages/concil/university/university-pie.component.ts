@@ -21,7 +21,6 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   piedata: Observable<PieData[]>;
   outcome_name: string[] = [];
   outcome_value: PieData[] = [];
-  
 
   test: PieData[] = [
     { value: 335, name: 'Germany' },
@@ -47,7 +46,6 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-      
         // this.outcome_value.push({name: 'el.name', value: el.value});
       console.warn(this.outcome_value);
       const colors = config.variables;
@@ -58,14 +56,12 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
         for(var i = 0; i < this.outcome_value.length; i++) {
           this.outcome_value.pop();
         }
-        
         for ( const el of data ) {
         this.outcome_name.push(el.name);
         // this.piedatas.value = el.value;
         // this.piedatas.name = el.name;
         const piedata = {value: el.value, name: el.name};
         this.outcome_value.push(piedata);
-      
       this.options = {
         backgroundColor: echarts.bg,
         color: [colors.warningLight, colors.infoLight, colors.dangerLight, colors.successLight, colors.primaryLight],
@@ -81,10 +77,9 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
             color: echarts.textColor,
           },
       },
-      
         series: [
           {
-            name: 'Countries',
+            name: '학생회비',
             type: 'pie',
             radius: '80%',
             center: ['50%', '50%'],
@@ -115,11 +110,9 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
       };
     } });
     });
-    
   }
 
   ngOnDestroy(): void {
     this.themeSubscription.unsubscribe();
   }
-  
 }
