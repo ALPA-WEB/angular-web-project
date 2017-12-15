@@ -24,33 +24,29 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
   piedatas: PieData = {
     value: 0,
     name: '',
-  }
+  };
 
   test: PieData[] = [
     { value: 335, name: 'Germany' },
     { value: 1548, name: 'USA' },
-  ]
-
-  
+  ];
   constructor(private theme: NbThemeService, private afs: AngularFirestore) {
   }
   ngOnInit(): void {
     this.piedataCol = this.afs.collection('studentCouncil').doc('university').collection('pie');
     this.piedata = this.piedataCol.valueChanges();
-    this.pieSubscription = this.piedata.subscribe((data) => { for ( const el of data ) {
+    this.pieSubscription = this.piedata.subscribe((data) => {
+      for ( let el of data ) {
       this.outcome_name.push(el.name);
       this.piedatas.value = el.value;
       this.piedatas.name = el.name;
       this.outcome_value.push(this.piedatas);
-
-
       // this.outcome_value.push({name:el.name, value:el.value});
 
     } });
   }
   ngAfterViewInit() {
     this.themeSubscription = this.theme.getJsTheme().subscribe(config => {
-      console.warn(this.outcome_name);
       console.warn(this.outcome_value);
       const colors = config.variables;
       const echarts: any = config.variables.echarts;
@@ -75,7 +71,7 @@ export class UniversityPieComponent implements OnInit, AfterViewInit, OnDestroy 
             type: 'pie',
             radius: '80%',
             center: ['50%', '50%'],
-            data: this.outcome_value,
+            data: this.test,
             itemStyle: {
               emphasis: {
                 shadowBlur: 10,
