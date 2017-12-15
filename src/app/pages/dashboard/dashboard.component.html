@@ -3,16 +3,18 @@
     <nb-card size="small">
       <nb-tabset fullWidth>
         <nb-tab tabTitle="소융">
-          <div *ngFor="let notice of notices | async" class="d-inline">
-              <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.title}}</button>
+          <div *ngFor="let uninotice of uninotices | async" class="d-inline">
+              <button class="btn btn-success" (click)="showLargeModal(uninotice.title, uninotice.content)">{{uninotice.title}}</button>
           </div>
         </nb-tab>
         <nb-tab tabTitle="소프트">
-          <span>Content #2</span>
-        </nb-tab>
+          <div *ngFor="let softnotice of softnotices | async" class="d-inline">
+            <button class="btn btn-success" (click)="showLargeModal(softnotice.title, softnotice.content)">{{softnotice.title}}</button>
+        </div>        </nb-tab>
         <nb-tab tabTitle="ICT">
-          <span>Content #3</span>
-        </nb-tab>
+          <div *ngFor="let ictnotice of ictnotices | async" class="d-inline">
+            <button class="btn btn-success" (click)="showLargeModal(ictnotice.title, ictnotice.content)">{{ictnotice.title}}</button>
+        </div>        </nb-tab>
       </nb-tabset>
     </nb-card>
   </div>

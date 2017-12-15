@@ -20,6 +20,10 @@ interface Academy{
   ZERONE: boolean;
   FIFO: boolean;
 }
+interface UniNotice {
+  title: "";
+  content: "";
+}
 @Component({
   selector: 'ngx-dashboard',
   styleUrls: ['./dashboard.component.scss',
@@ -40,6 +44,13 @@ export class DashboardComponent implements OnInit {
     email: "",
     displayName: "",    
   }
+
+  uninoticesCol: AngularFirestoreCollection<UniNotice>;
+  uninotices: Observable<UniNotice[]>
+  // uninotice: UniNotice = {
+  //   title: "",
+  //   content: "",
+  // }
   acaSubscription: any;
   item: NbMenuItem = {
     title: "",
@@ -118,6 +129,9 @@ export class DashboardComponent implements OnInit {
     if (this.username === '') {
       this.username = '사용자없음';
     }
+
+    this.uninoticesCol = this.afs.collection("studentCouncil").doc("university").collection("notice");
+    this.uninotices = this.uninoticesCol.valueChanges();
   }
   changeName(userName): void {
     this.username = userName;

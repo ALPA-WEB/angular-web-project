@@ -7,23 +7,26 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { allResolved } from 'q';
 
 let counter = 0;
 interface User {
   uid: string;
   email: string;
-  // photoURL?: string;
   displayName: string;
-  // favoriteColor?: string;
-  ALPA: boolean;HYCUBE: boolean;
+  ALPA: boolean;
+  HYCUBE: boolean;
   JARAM: boolean;
   ZERONE: boolean;
   FIFO: boolean;
 }
 
 @Injectable()
-export class UserService {    usercom: any;
-  
+export class UserService {    
+  usercom: User = {uid: "", email:"", displayName:"", ALPA:false, HYCUBE: false,
+  JARAM: false,
+  ZERONE: false,
+  FIFO: false,};
   user: Observable<User>;
   constructor(private afAuth: AngularFireAuth,
               private afs: AngularFirestore,
@@ -51,7 +54,7 @@ export class UserService {    usercom: any;
   private updateUserData(user) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.email}`);
-    this.usercom = userRef.valueChanges();
+    userRef.valueChanges().subscribe((data) => this.usercom = data);
     const data: User = {
       uid: user.uid,
       email: user.email,
@@ -62,12 +65,11 @@ export class UserService {    usercom: any;
       ZERONE: false,
       FIFO: false,
     }
-      
-    if(user.uid == this.usercom.uid){
-
+      // alert(user.email + "|" + this.usercom.email);
+    if(user.email == this.usercom.email){
       return null;
     }else{
-return userRef.set(data);
+      return userRef.set(data);
     }
   }
   signOut() {
