@@ -13,10 +13,10 @@ interface Notice {
 }
 
 @Component({
-    selector: 'ngx-alpa-notice',
-    templateUrl: 'alpa-notice.component.html',
+    selector: 'ngx-fifo-notice',
+    templateUrl: 'fifo-notice.component.html',
 })
-export class AlpanoticeComponent implements OnInit {
+export class FifonoticeComponent implements OnInit {
     noticesCol: AngularFirestoreCollection<Notice>;
     notices: Observable<Notice[]>;
     noticeDoc: AngularFirestoreDocument<Notice>;
@@ -31,12 +31,11 @@ export class AlpanoticeComponent implements OnInit {
     modalContent: string;
 
     constructor(private activeModal: NgbActiveModal,
-                // private acdemyservice: AcademyService,
                 private afs: AngularFirestore) {
     }
 
     ngOnInit() {
-        this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
+        this.noticesCol = this.afs.collection('academy').doc('FIFO').collection('notice');
         this.notices = this.noticesCol.valueChanges();
     }
 
@@ -44,10 +43,4 @@ export class AlpanoticeComponent implements OnInit {
         this.activeModal.close();
     }
 
-    // addNotice(){
-    //   this.afs.collection('notice').add({
-    //     'title': this.notice.title,
-    //     'content': this.notice.content,
-    //   })
-    // }
 }

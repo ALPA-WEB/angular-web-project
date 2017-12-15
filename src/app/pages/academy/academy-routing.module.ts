@@ -16,6 +16,18 @@ import { AcadComponent } from './academy.component';
 import { AlpamanageComponent } from './alpa/alpa-management.component';
 import { AlpanoticeComponent } from './alpa/alpa-notice.component';
 import { AlpanoticeinputComponent } from './alpa/alpa-noticeinput.component';
+import { FifomanageComponent } from './fifo/fifo-management.component';
+import { FifonoticeComponent } from './fifo/fifo-notice.component';
+import { FifoinputComponent } from './fifo/fifo-input.component';
+import { JarammanageComponent } from './jaram/jaram-management.component';
+import { JaramnoticeComponent } from './jaram/jaram-notice.component';
+import { JaraminputComponent } from './jaram/jaram-input.component';
+import { HycubemanageComponent } from './hycube/hycube-management.component';
+import { HycubenoticeComponent } from './hycube/hycube-notice.component';
+import { HycubeinputComponent } from './hycube/hycube-input.component';
+import { ZeroonemanageComponent } from './zeroone/zeroone-management.component';
+import { ZeroonenoticeComponent } from './zeroone/zeroone-notice.component';
+import { ZerooneinputComponent } from './zeroone/zeroone-input.component';
 
 const routes: Routes = [{
     path: '',
@@ -58,4 +70,16 @@ export const routedComponents = [
     AlpamanageComponent,
     AlpanoticeComponent,
     AlpanoticeinputComponent,
+    FifomanageComponent,
+    FifonoticeComponent,
+    FifoinputComponent,
+    JarammanageComponent,
+    JaramnoticeComponent,
+    JaraminputComponent,
+    HycubemanageComponent,
+    HycubenoticeComponent,
+    HycubeinputComponent,
+    ZeroonemanageComponent,
+    ZeroonenoticeComponent,
+    ZerooneinputComponent,
 ];

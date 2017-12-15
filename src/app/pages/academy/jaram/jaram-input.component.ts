@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlpanoticeComponent } from './alpa-notice.component';
+import { JaramnoticeComponent } from './jaram-notice.component';
 
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -30,12 +30,12 @@ interface User{
 
 var utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
 @Component({
-    selector: 'ngx-alpa-noticeinputs',
-    styleUrls: ['./alpa-noticeinput.component.scss'],
-    templateUrl: './alpa-noticeinput.component.html',
+    selector: 'ngx-jaram-inputs',
+    styleUrls: ['./jaram-input.component.scss'],
+    templateUrl: './jaram-input.component.html',
   })
 
-export class AlpanoticeinputComponent implements OnInit{
+export class JaraminputComponent implements OnInit{
       starRate = 2;
       heartRate = 4;
       noticesCol: AngularFirestoreCollection<Notice>;
@@ -68,14 +68,13 @@ export class AlpanoticeinputComponent implements OnInit{
         FIFO: false,
       };
     constructor(
-        // private acdemyservice: AcademyService,
       private afs: AngularFirestore, public userService: UserService) {
        
       }
         ngOnInit() {
-          this.noticesCol = this.afs.collection('academy').doc('ALPA').collection('notice');
+          this.noticesCol = this.afs.collection('academy').doc('JARAM').collection('notice');
           this.notices = this.noticesCol.valueChanges();
-          this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
+          this.membersCol = this.afs.collection('academy').doc('JARAM').collection('member');
           this.members = this.membersCol.valueChanges();
           this.usersCol = this.afs.collection('users');
           this.users = this.usersCol.valueChanges();
@@ -83,33 +82,30 @@ export class AlpanoticeinputComponent implements OnInit{
             
         }
         addNotice() {
-          // this.afs.collection('notice').add({
-          //   'title': this.notice.title,
-          //   'content': this.notice.content,
-          // })
-          this.afs.collection('academy').doc('ALPA').collection('notice').add({
+          this.afs.collection('academy').doc('JARAM').collection('notice').add({
             'title': this.notice.title,
             'content': this.notice.content,
             'date': utc,
           });
         }
         addMember() {
-          this.afs.collection('academy').doc('ALPA').collection('member').add({
+          this.afs.collection('academy').doc('JARAM').collection('member').add({
             'duty': this.member.duty,
             'name': this.member.name,
             'email': this.member.email,
             'sid': this.member.sid,
           });
           this.users.subscribe((data) => {for ( const el of data ) {
+            
             if(el.email == this.member.email) {
               const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${el.email}`);
               const data: User = {
                 uid: el.uid,
                 email: el.email,
                 displayName: el.displayName,
-                ALPA: true,
+                ALPA: el.ALPA,
                 HYCUBE: el.HYCUBE,
-                JARAM: el.JARAM,
+                JARAM: true,
                 ZERONE: el.ZERONE,
                 FIFO: el.FIFO,
               }

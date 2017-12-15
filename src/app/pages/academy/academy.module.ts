@@ -16,6 +16,10 @@ import { ThemeModule  } from '../../@theme/theme.module';
 import { SmartTableService } from '../../@core/data/smart-table.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AlpanoticeComponent } from './alpa/alpa-notice.component';
+import { FifonoticeComponent } from './fifo/fifo-notice.component';
+import { JaramnoticeComponent } from './jaram/jaram-notice.component';
+import { HycubenoticeComponent } from './hycube/hycube-notice.component';
+import { ZeroonenoticeComponent } from './zeroone/zeroone-notice.component';
 
 
 @NgModule({
@@ -32,7 +36,7 @@ import { AlpanoticeComponent } from './alpa/alpa-notice.component';
       SmartTableService,
     ],
     entryComponents: [
-        AlpanoticeComponent,
+        AlpanoticeComponent,FifonoticeComponent,HycubenoticeComponent,JaramnoticeComponent,ZeroonenoticeComponent,
     ],
 })
 export class AcadModule {

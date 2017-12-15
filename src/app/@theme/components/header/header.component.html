@@ -7,7 +7,7 @@
 <ng-template #auth >
 <div class="header-container"
 [class.left]="position === 'normal'"
-[class.right]="position === 'inverse'" style="flex-grow: 8">
+[class.right]="position === 'inverse'" style="flex-grow: 5">
 <div class="logo-containter">
 <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
 <div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
@@ -18,7 +18,7 @@
  size="medium"
  class="header-container"
  [class.right]="position === 'normal'"
- [class.left]="position === 'inverse'">
+ [class.left]="position === 'inverse'" style="flex-grow: 1">
  <!-- (click)="userService.signOut()" -->
 <nb-action  *ngIf="userService.user | async as user;"> 
     <nb-user [menu]="userMenu" name="{{ user.displayName }}" [picture]="user?.picture" (menuClick)="userService.signOut()"></nb-user>
@@ -32,9 +32,9 @@
 <!--인증안되었을 때-->
  <ng-template #guest> 
     
-<div class="header-container" style="flex-grow: 8"
+<div class="header-container" style="flex-grow: 5"
 [class.left]="position === 'normal'"
-[class.right]="position === 'inverse'" style="flex-grow: 8">
+[class.right]="position === 'inverse'">
 <div class="logo-containter">
 <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
 <div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
@@ -43,7 +43,7 @@
 
 <nb-actions
  size="medium"
- class="header-container" style="cursor: pointer"
+ class="header-container" style="cursor: pointer; flex-grow: 1"
  [class.right]="position === 'normal'"
  [class.left]="position === 'inverse'">
 

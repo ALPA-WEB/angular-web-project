@@ -14,9 +14,9 @@ interface Member {
   sid: string;
 }
 @Component({
-  selector: 'ngx-alpa-manage',
+  selector: 'ngx-fifo-manage',
   // template: `<ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>`,
-  styleUrls: ['alpa-management.component.scss'],
+  styleUrls: ['fifo-management.component.scss'],
   template: `
     <table class="w3-table-all w3-hoverable">
       <thead>
@@ -37,7 +37,7 @@ interface Member {
       </tbody>
     </table>`,
 })
-export class AlpamanageComponent implements OnInit{
+export class FifomanageComponent implements OnInit{
   membersCol: AngularFirestoreCollection<Member>;
   members: Observable<Member[]>;
 
@@ -86,7 +86,7 @@ export class AlpamanageComponent implements OnInit{
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService, private afs: AngularFirestore,
+  constructor(private service: SmartTableService,private afs: AngularFirestore,
     ) {
 
     const data = this.service.getData();
@@ -94,7 +94,7 @@ export class AlpamanageComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
+    this.membersCol = this.afs.collection('academy').doc('FIFO').collection('member');
     this.members = this.membersCol.valueChanges();
   }
   onDeleteConfirm(event): void {
