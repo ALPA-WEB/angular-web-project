@@ -64,6 +64,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/convenience',
     children: [
       {
+        title: '스룸 사물함 신청',
+        link: '/pages/convenience/locker',
+      },{
         title: '소융 벼룩시장',
         link: '/pages/convenience/market',
       },

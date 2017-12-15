@@ -7,14 +7,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {MarketComponent} from './market/market.component';
+import {LockerComponent} from './locker/locker.component';
 import {ConvComponent} from './convenience.component';
 
 const routes: Routes = [{
     path: '',
     component: ConvComponent,
     children: [{
-        path: 'market',
-        component: MarketComponent,
+        path: 'market', 
+        component: MarketComponent, 
+    },{
+        path: 'locker', 
+        component: LockerComponent, 
     }],
 }];
 
@@ -25,5 +29,5 @@ const routes: Routes = [{
 export class ConvRoutingModule { }
 
 export const routedComponents = [
-    MarketComponent,
+    MarketComponent,LockerComponent
 ];

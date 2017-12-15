@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-3">
+        <nb-card>
+            <div *ngFor="let locker of lockers | async">
+                <div *ngIf="locker.use">
+                    <button class="usinglocker" (click)="registered(locker.no)">{{locker.no}}</button>
+                </div>
+                <div *ngIf="locker.use==false">
+                    <button class="uselocker" (click)="register(locker.no)">{{locker.no}}</button>
+                </div>
+            </div>
+        </nb-card>
+    </div>
+</div>
