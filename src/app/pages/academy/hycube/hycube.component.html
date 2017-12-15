@@ -1,26 +1,23 @@
 <div *ngIf="userService.user | async as user;" class="row">
-        <div class="col-lg-12">
-          <nb-card>
-            <nb-card-header>Fifo 공지사항</nb-card-header>
-            <nb-card-body>
-              <div *ngFor="let notice of notices | async" class="d-inline" >
-                  <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
-              </div>
-            </nb-card-body>
-          </nb-card>
-          <nb-card>
-
-            <nb-card-body>
-                <ngx-hycube-manage></ngx-hycube-manage>
-            </nb-card-body>
-          </nb-card>
-          <nb-card>
-                  <div *ngFor="let master of masters | async">
-                      <nb-card-body *ngIf="user.uid==master.uid">
-                          <ngx-hycube-inputs></ngx-hycube-inputs>
-                      </nb-card-body>
-                  </div>
-          </nb-card>
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-header>HYCUBE 공지사항</nb-card-header>
+      <nb-card-body>
+        <div *ngFor="let notice of notices | async" class="d-inline" >
+          <button class="btn btn-success" (click)="showLargeModal(notice.title, notice.content)">{{notice.date}}</button>
         </div>
-      </div>
-
+      </nb-card-body>
+    </nb-card>
+    <nb-card>
+      <nb-card-header>HYCUBE 학회원</nb-card-header>
+      <nb-card-body>
+        <ngx-hycube-manage></ngx-hycube-manage>
+      </nb-card-body>
+    </nb-card>
+    <div *ngFor="let master of masters | async">
+      <nb-card-body *ngIf="user.uid==master.uid">
+        <ngx-hycube-inputs></ngx-hycube-inputs>
+      </nb-card-body>
+    </div>
+  </div>
+</div>
