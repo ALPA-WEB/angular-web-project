@@ -10,6 +10,8 @@ import * as firebase from 'firebase';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
+import { AlpanoticeComponent } from '../academy/alpa/alpa-notice.component';
+
 interface Academy{
   ALPA: boolean;
   uid: string;
@@ -20,7 +22,7 @@ interface Academy{
   ZERONE: boolean;
   FIFO: boolean;
 }
-interface UniNotice {
+interface Notice {
   title: "";
   content: "";
 }
@@ -45,8 +47,12 @@ export class DashboardComponent implements OnInit {
     displayName: "",    
   }
 
-  uninoticesCol: AngularFirestoreCollection<UniNotice>;
-  uninotices: Observable<UniNotice[]>
+  uninoticesCol: AngularFirestoreCollection<Notice>;
+  uninotices: Observable<Notice[]>
+  softnoticesCol: AngularFirestoreCollection<Notice>;
+  softnotices: Observable<Notice[]>
+  ictnoticesCol: AngularFirestoreCollection<Notice>;
+  ictnotices: Observable<Notice[]>
   // uninotice: UniNotice = {
   //   title: "",
   //   content: "",
@@ -132,8 +138,17 @@ export class DashboardComponent implements OnInit {
 
     this.uninoticesCol = this.afs.collection("studentCouncil").doc("university").collection("notice");
     this.uninotices = this.uninoticesCol.valueChanges();
+    this.softnoticesCol = this.afs.collection("studentCouncil").doc("soft").collection("notice");
+    this.softnotices = this.uninoticesCol.valueChanges();
+    this.ictnoticesCol = this.afs.collection("studentCouncil").doc("ict").collection("notice");
+    this.ictnotices = this.uninoticesCol.valueChanges();
   }
   changeName(userName): void {
     this.username = userName;
+  }
+  showLargeModal(gettitle, getcontent) {
+    const activeModal = this.modalService.open(ModalComponent, { size: 'lg', container: 'nb-layout' });
+    activeModal.componentInstance.modalHeader = gettitle;
+    activeModal.componentInstance.modalContent = getcontent;
   }
 }
