@@ -10,11 +10,13 @@
         <nb-tab tabTitle="소프트">
           <div *ngFor="let softnotice of softnotices | async" class="d-inline">
             <button class="btn btn-success" (click)="showLargeModal(softnotice.title, softnotice.content)">{{softnotice.title}}</button>
-        </div>        </nb-tab>
+        </div>        
+      </nb-tab>
         <nb-tab tabTitle="ICT">
           <div *ngFor="let ictnotice of ictnotices | async" class="d-inline">
             <button class="btn btn-success" (click)="showLargeModal(ictnotice.title, ictnotice.content)">{{ictnotice.title}}</button>
-        </div>        </nb-tab>
+        </div>        
+      </nb-tab>
       </nb-tabset>
     </nb-card>
   </div>

@@ -139,9 +139,9 @@ export class DashboardComponent implements OnInit {
     this.uninoticesCol = this.afs.collection("studentCouncil").doc("university").collection("notice");
     this.uninotices = this.uninoticesCol.valueChanges();
     this.softnoticesCol = this.afs.collection("studentCouncil").doc("soft").collection("notice");
-    this.softnotices = this.uninoticesCol.valueChanges();
+    this.softnotices = this.softnoticesCol.valueChanges();
     this.ictnoticesCol = this.afs.collection("studentCouncil").doc("ict").collection("notice");
-    this.ictnotices = this.uninoticesCol.valueChanges();
+    this.ictnotices = this.ictnoticesCol.valueChanges();
   }
   changeName(userName): void {
     this.username = userName;
