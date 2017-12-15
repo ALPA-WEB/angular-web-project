@@ -24,6 +24,10 @@ interface Member {
 interface Master {
     uid: string;
 }
+interface Outcome {
+    name: string;
+    value: number;
+}
 @Component({
     selector: 'ngx-university',
     templateUrl: 'university.component.html',
@@ -53,6 +57,10 @@ export class UniversityComponent implements OnInit {
         name: '',
         role: '',
     };
+    outcome: Outcome = {
+        name: '',
+        value: 0,
+    };
     constructor( private modalService: NgbModal, private afs: AngularFirestore, public userService: UserService ) { }
     ngOnInit() {
         this.introsCol = this.afs.collection('studentCouncil').doc('university').collection('intro');
@@ -81,6 +89,12 @@ export class UniversityComponent implements OnInit {
             .collection(this.selectedValue).add({
             'name': this.member.name,
             'role': this.member.role,
+        });
+    }
+    addOutcome() {
+        this.afs.collection('studentCouncil').doc('university').collection('pie').add({
+            'name': this.outcome.name,
+            'value': this.outcome.value,
         });
     }
 }
