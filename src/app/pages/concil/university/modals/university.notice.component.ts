@@ -4,9 +4,6 @@
 
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-
-
-import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 
 interface Notice {
@@ -19,9 +16,6 @@ interface Notice {
     templateUrl: 'university.notice.component.html',
 })
 export class UnivNoticeComponent implements OnInit {
-    noticesCol: AngularFirestoreCollection<Notice>;
-    notices: Observable<Notice[]>;
-    noticeDoc: AngularFirestoreDocument<Notice>;
 
     notice: Notice = {
         title: '',
@@ -34,7 +28,7 @@ export class UnivNoticeComponent implements OnInit {
 
     constructor(private activeModal: NgbActiveModal,
                 // private acdemyservice: AcademyService,
-                private afs: AngularFirestore) {
+                ) {
     }
 
     ngOnInit() {

@@ -9,25 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CoreModule } from './@core/core.module';
-
-import { AngularFireModule } from 'angularfire2';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
-export const firebaseConfig = {
-  
-  apiKey: "AIzaSyCwshbNesxP965RfapSuQxCDxAIT9uKc0M",
-  authDomain: "test-28325.firebaseapp.com",
-  databaseURL: "https://test-28325.firebaseio.com",
-  projectId: "test-28325",
-  storageBucket: "test-28325.appspot.com",
-  messagingSenderId: "332220966776"
-
-};
+import {NbAuthModule} from '@nebular/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,12 +22,11 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-
+    NbAuthModule,
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
     CoreModule,
-    AngularFireModule.initializeApp(firebaseConfig),
   ],
   bootstrap: [AppComponent],
   providers: [

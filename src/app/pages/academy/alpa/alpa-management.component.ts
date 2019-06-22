@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SmartTableService } from '../../../@core/data/smart-table.service';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 
 interface Member {
@@ -33,20 +31,20 @@ interface Member {
           <td>{{member.name}}</td>
           <td>{{member.sid}}</td>
           <td>{{member.email}}</td>
-        </tr> 
+        </tr>
       </tbody>
     </table>`,
 })
-export class AlpamanageComponent implements OnInit{
-  membersCol: AngularFirestoreCollection<Member>;
+export class AlpamanageComponent implements OnInit {
+  membersCol: any;
   members: Observable<Member[]>;
 
   member: Member = {
-    duty: "",
-    name: "",
-    email: "",
-    sid: "",
-  }
+    duty: '',
+    name: '',
+    email: '',
+    sid: '',
+  };
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -81,20 +79,19 @@ export class AlpamanageComponent implements OnInit{
         title: 'email',
         type: 'string',
     },
-  }
-}
+  },
+};
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService, private afs: AngularFirestore,
-    ) {
+  constructor(private service: SmartTableService) {
 
     const data = this.service.getData();
     this.source.load(data);
   }
 
-  ngOnInit(){
-    this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
+  ngOnInit() {
+    // this.membersCol = this.afs.collection('academy').doc('ALPA').collection('member');
     this.members = this.membersCol.valueChanges();
   }
   onDeleteConfirm(event): void {

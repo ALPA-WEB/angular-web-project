@@ -8,8 +8,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { JarammanageComponent } from './jaram-management.component';
 import { JaramnoticeComponent } from './jaram-notice.component';
 import { JaraminputComponent } from './jaram-input.component';
-
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import {UserService} from '../../../@core/data/users.service';
 
@@ -28,9 +26,9 @@ interface Master {
 })
 export class JaramComponent implements OnInit {
   user: any;
-  noticesCol: AngularFirestoreCollection<Notice>;
+  noticesCol: any;
   notices: Observable<Notice[]>;
-  mastersCol: AngularFirestoreCollection<Master>;
+  mastersCol: any;
   masters: Observable<Master[]>;
   notice: Notice = {
     title: '',
@@ -48,5 +46,4 @@ export class JaramComponent implements OnInit {
     }
     ngOnInit () {
     }
-
 }

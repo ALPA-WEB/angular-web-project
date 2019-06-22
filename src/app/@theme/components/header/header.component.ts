@@ -1,27 +1,18 @@
 import {Component, Input, OnInit} from '@angular/core';
-
-
-import {Observable} from 'rxjs/Observable';
-import {AngularFireAuth} from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-
 import {NbMenuService, NbSidebarService} from '@nebular/theme';
 import {UserService} from '../../../@core/data/users.service';
 import {AnalyticsService} from '../../../@core/utils/analytics.service';
+import {User} from '../../../@core/data/user';
 
 @Component({
     selector: 'ngx-header',
     styleUrls: ['./header.component.scss'],
     templateUrl: './header.component.html',
-    providers: [AngularFireAuth],
 })
 
 export class HeaderComponent implements OnInit {
-
-
     @Input() position = 'normal';
-
-    user: any;
+    user: User;
 
     userMenu = [
         {title: 'Log out'},
@@ -31,7 +22,8 @@ export class HeaderComponent implements OnInit {
               private menuService: NbMenuService,
               public userService: UserService,
               private analyticsService: AnalyticsService,
-              public afAuth: AngularFireAuth) {
+              ) {
+    this.user = userService.getCurrentUser();
   }
   /*
   login() {
@@ -46,7 +38,7 @@ export class HeaderComponent implements OnInit {
     // if(this.afAuth.authState) {
     // this.afAuth.authState.subscribe((user: firebase.User) => this.user = {name : user.displayName});
     // }else{
-      //this.user = {name : "Google Sign In!!"};
+    // this.user = {name : "Google Sign In!!"};
     // this.userService.getUsers()
     //   .subscribe((users: any) => this.user = users.nologin);
     // }

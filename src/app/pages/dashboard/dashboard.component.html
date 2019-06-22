@@ -10,12 +10,12 @@
         <nb-tab tabTitle="소프트">
           <div *ngFor="let softnotice of softnotices | async" class="d-inline">
             <button class="btn btn-success" (click)="showLargeModal(softnotice.title, softnotice.content)">{{softnotice.title}}</button>
-        </div>        
+        </div>
       </nb-tab>
         <nb-tab tabTitle="ICT">
           <div *ngFor="let ictnotice of ictnotices | async" class="d-inline">
             <button class="btn btn-success" (click)="showLargeModal(ictnotice.title, ictnotice.content)">{{ictnotice.title}}</button>
-        </div>        
+        </div>
       </nb-tab>
       </nb-tabset>
     </nb-card>
@@ -28,7 +28,7 @@
             <nb-card-header>내가 가입한 학회</nb-card-header>
             <nb-card-body>
               <!-- <div *ngFor="let academy of academys | async"> -->
-                  <nb-menu [items]="academy_menu" [tag]="academy"  *ngIf="afAuth.authState | async;">
+                  <nb-menu [items]="academy_menu" [tag]="academy">
                     </nb-menu>
               <!-- </div> -->
             </nb-card-body>

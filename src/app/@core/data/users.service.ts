@@ -31,6 +31,9 @@ export class UserService {
   public googleLogin(): void {
     this.auth.signInWithPopup(this.googleProvider);
   }
+  public getCurrentUser(): User {
+    return this.currentUser;
+  }
   private updateUser(user): void {
     if (!user || user.uid === undefined) {return; }
     this.findUser(user.uid).then(res => {

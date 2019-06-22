@@ -1,55 +1,44 @@
+<ng-template *ngIf="user.email !==''; else guest">
+  <div class="header-container"
+       [class.left]="position === 'normal'"
+       [class.right]="position === 'inverse'" style="flex-grow: 5">
+    <div class="logo-containter">
+      <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+      <div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
+    </div>
+  </div>
 
-
- <div *ngIf="userService.user | async; then auth else guest">
-</div>
-
- <!--인증되었을 때-->
-<ng-template #auth >
-<div class="header-container"
-[class.left]="position === 'normal'"
-[class.right]="position === 'inverse'" style="flex-grow: 5">
-<div class="logo-containter">
-<a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-<div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
-</div>
-</div>
-
-<nb-actions
- size="medium"
- class="header-container"
- [class.right]="position === 'normal'"
- [class.left]="position === 'inverse'" style="flex-grow: 1">
- <!-- (click)="userService.signOut()" -->
-<nb-action  *ngIf="userService.user | async as user;"> 
-    <nb-user [menu]="userMenu" name="{{ user.displayName }}" [picture]="user?.picture" (menuClick)="userService.signOut()"></nb-user>
-</nb-action> 
-
-</nb-actions>
+  <nb-actions
+    size="medium"
+    class="header-container"
+    [class.right]="position === 'normal'"
+    [class.left]="position === 'inverse'" style="flex-grow: 1">
+    <nb-action>
+      <nb-user [menu]="userMenu" name="{{ user.displayName }}"
+               (menuClick)="userService.signOut()"></nb-user>
+    </nb-action>
+  </nb-actions>
 </ng-template>
-
-
-
 <!--인증안되었을 때-->
- <ng-template #guest> 
-    
-<div class="header-container" style="flex-grow: 5"
-[class.left]="position === 'normal'"
-[class.right]="position === 'inverse'">
-<div class="logo-containter">
-<a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
-<div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
-</div>
-</div>
+<ng-template #guest>
+  <div class="header-container" style="flex-grow: 5"
+       [class.left]="position === 'normal'"
+       [class.right]="position === 'inverse'">
+    <div class="logo-containter">
+      <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+      <div class="logo" (click)="goToHome()"><span>소프트웨어융합대학 통합 관리</span></div>
+    </div>
+  </div>
 
-<nb-actions
- size="medium"
- class="header-container" style="cursor: pointer; flex-grow: 1"
- [class.right]="position === 'normal'"
- [class.left]="position === 'inverse'">
+  <nb-actions
+    size="medium"
+    class="header-container" style="cursor: pointer; flex-grow: 1"
+    [class.right]="position === 'normal'"
+    [class.left]="position === 'inverse'">
 
-<nb-action (click)="userService.googleLogin()">
-<!-- <i class="fa fa-google"></i> Connect Google -->
-<nb-user name="Google Sign In!!" ></nb-user>
-</nb-action> 
-</nb-actions>
+    <nb-action (click)="userService.googleLogin()">
+      <!-- <i class="fa fa-google"></i> Connect Google -->
+      <nb-user name="Google Sign In!!"></nb-user>
+    </nb-action>
+  </nb-actions>
 </ng-template>

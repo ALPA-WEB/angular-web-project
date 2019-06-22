@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbThemeService, NbMediaBreakpoint, NbMediaBreakpointsService } from '@nebular/theme';
 
 import { UserService } from '../../../../@core/data/users.service';
-import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 interface User {
   name: string;
@@ -23,15 +22,12 @@ export class UnivContactsComponent implements OnInit, OnDestroy {
   breakpoints: any;
   themeSubscription: any;
   UserSubscription: any;
-  Advertise: AngularFirestoreCollection<User>;
-  Finance: AngularFirestoreCollection<User>;
-  Execution: AngularFirestoreCollection<User>;
 
 
   constructor(private userService: UserService,
               private themeService: NbThemeService,
               private breakpointService: NbMediaBreakpointsService,
-              private afs: AngularFirestore ) {
+  ) {
 
     this.breakpoints = breakpointService.getBreakpointsMap();
     this.themeSubscription = themeService.onMediaQueryChange()
@@ -41,15 +37,15 @@ export class UnivContactsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.Advertise = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
-        .collection('advertise');
-    this.advertisers = this.Advertise.valueChanges();
-    this.Finance = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
-        .collection('finance');
-    this.finances = this.Finance.valueChanges();
-    this.Execution = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
-        .collection('execution');
-    this.executions = this.Execution.valueChanges();
+    // this.Advertise = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
+    //     .collection('advertise');
+    // this.advertisers = this.Advertise.valueChanges();
+    // this.Finance = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
+    //     .collection('finance');
+    // this.finances = this.Finance.valueChanges();
+    // this.Execution = this.afs.collection('studentCouncil').doc('university').collection('members').doc('l2I9usSkn2Y5EGHYqdCW')
+    //     .collection('execution');
+    // this.executions = this.Execution.valueChanges();
   }
 
   ngOnDestroy() {

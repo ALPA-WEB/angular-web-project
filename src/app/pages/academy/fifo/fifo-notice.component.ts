@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 // import { AcademyService } from '../../../@core/data/academy.service';
-
-
-import {AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 
 interface Notice {
@@ -17,30 +14,29 @@ interface Notice {
     templateUrl: 'fifo-notice.component.html',
 })
 export class FifonoticeComponent implements OnInit {
-    noticesCol: AngularFirestoreCollection<Notice>;
+    noticesCol: any;
     notices: Observable<Notice[]>;
-    noticeDoc: AngularFirestoreDocument<Notice>;
+    noticeDoc: any;
 
     notice: Notice = {
         title: '',
         content: '',
         date: '',
-    }
+    };
 
     modalHeader: string;
     modalContent: string;
 
     constructor(private activeModal: NgbActiveModal,
-                private afs: AngularFirestore) {
+               ) {
     }
 
     ngOnInit() {
-        this.noticesCol = this.afs.collection('academy').doc('FIFO').collection('notice');
-        this.notices = this.noticesCol.valueChanges();
+        // this.noticesCol = this.afs.collection('academy').doc('FIFO').collection('notice');
+        // this.notices = this.noticesCol.valueChanges();
     }
 
     closeModal() {
         this.activeModal.close();
     }
-
 }

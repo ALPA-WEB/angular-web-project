@@ -11,7 +11,6 @@ import { AcadComponent } from './academy.component';
 import { AcadRoutingModule, routedComponents } from './academy-routing.module';
 import { ThemeModule  } from '../../@theme/theme.module';
 
-// import { UiFeaturesModule } from '../ui-features/ui-features.module';
 
 import { SmartTableService } from '../../@core/data/smart-table.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -36,7 +35,11 @@ import { ZeroonenoticeComponent } from './zeroone/zeroone-notice.component';
       SmartTableService,
     ],
     entryComponents: [
-        AlpanoticeComponent,FifonoticeComponent,HycubenoticeComponent,JaramnoticeComponent,ZeroonenoticeComponent,
+      AlpanoticeComponent,
+      FifonoticeComponent,
+      HycubenoticeComponent,
+      JaramnoticeComponent,
+      ZeroonenoticeComponent,
     ],
 })
 export class AcadModule {

@@ -2,14 +2,12 @@
 /**
  * Created by chou6 on 2017-11-20.
  */
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ZeroonemanageComponent } from './zeroone-management.component';
 import { ZeroonenoticeComponent } from './zeroone-notice.component';
 import { ZerooneinputComponent } from './zeroone-input.component';
-
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import {UserService} from '../../../@core/data/users.service';
 
@@ -26,22 +24,22 @@ interface Master {
     styleUrls: ['zeroone.component.scss'],
     templateUrl: 'zeroone.component.html',
 })
-export class ZerooneComponent{
+export class ZerooneComponent implements OnInit {
   user: any;
-  noticesCol: AngularFirestoreCollection<Notice>;
+  noticesCol: any;
   notices: Observable<Notice[]>;
-  mastersCol: AngularFirestoreCollection<Master>;
+  mastersCol: any;
   masters: Observable<Master[]>;
   notice: Notice = {
-    title: "",
-    content: "",
-    date: ""
-  }
+    title: '',
+    content: '',
+    date: '',
+  };
   master: Master = {
-    uid: "",
-  }
+    uid: '',
+  };
 
-  constructor(private modalService: NgbModal, private afs:AngularFirestore, public userService:UserService) { }
+  constructor(private modalService: NgbModal, public userService: UserService) { }
 
 
 
@@ -52,11 +50,11 @@ export class ZerooneComponent{
     }
 
 
-    ngOnInit(){
-      this.noticesCol = this.afs.collection('academy').doc('ZERONE').collection('notice', ref  => ref.orderBy('date','desc'));
-      this.notices = this.noticesCol.valueChanges();
-      this.mastersCol = this.afs.collection('master');
-      this.masters = this.mastersCol.valueChanges();
+    ngOnInit () {
+      // this.noticesCol = this.afs.collection('academy').doc('ZERONE').collection('notice', ref  => ref.orderBy('date','desc'));
+      // this.notices = this.noticesCol.valueChanges();
+      // this.mastersCol = this.afs.collection('master');
+      // this.masters = this.mastersCol.valueChanges();
     }
 
 }

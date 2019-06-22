@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { LocalDataSource } from 'ng2-smart-table';
-import { SmartTableService } from '../../../@core/data/smart-table.service';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
-
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import {LocalDataSource} from 'ng2-smart-table';
+import {SmartTableService} from '../../../@core/data/smart-table.service';
+import {OnInit} from '@angular/core/src/metadata/lifecycle_hooks';
+import {Observable} from 'rxjs/Observable';
 
 interface Member {
   duty: string;
@@ -13,39 +11,39 @@ interface Member {
   email: string;
   sid: string;
 }
+
 @Component({
   selector: 'ngx-hycube-manage',
   styleUrls: ['hycube-management.component.scss'],
   template: `
     <table class="w3-table-all w3-hoverable">
       <thead>
-        <tr class="w3-light-grey">
-          <th scope="cols">직책</th>
-          <th scope="cols">이름</th>
-          <th scope="cols">학번</th>
-          <th scope="cols">이메일</th>
-        </tr>
+      <tr class="w3-light-grey">
+        <th scope="cols">직책</th>
+        <th scope="cols">이름</th>
+        <th scope="cols">학번</th>
+        <th scope="cols">이메일</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let member of members | async" >
-          <td>{{member.duty}}</td>
-          <td>{{member.name}}</td>
-          <td>{{member.sid}}</td>
-          <td>{{member.email}}</td>
-        </tr> 
+      <tr *ngFor="let member of members | async">
+        <td>{{member.duty}}</td>
+        <td>{{member.name}}</td>
+        <td>{{member.sid}}</td>
+        <td>{{member.email}}</td>
+      </tr>
       </tbody>
     </table>`,
 })
-export class HycubemanageComponent implements OnInit{
-  membersCol: AngularFirestoreCollection<Member>;
+export class HycubemanageComponent implements OnInit {
   members: Observable<Member[]>;
 
   member: Member = {
-    duty: "",
-    name: "",
-    email: "",
-    sid: "",
-  }
+    duty: '',
+    name: '',
+    email: '',
+    sid: '',
+  };
   settings = {
     add: {
       addButtonContent: '<i class="nb-plus"></i>',
@@ -79,23 +77,22 @@ export class HycubemanageComponent implements OnInit{
       email: {
         title: 'email',
         type: 'string',
+      },
     },
-  }
-}
+  };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService,private afs: AngularFirestore,
-    ) {
-
+  constructor(private service: SmartTableService) {
     const data = this.service.getData();
     this.source.load(data);
   }
 
-  ngOnInit(){
-    this.membersCol = this.afs.collection('academy').doc('HYCUBE').collection('member');
-    this.members = this.membersCol.valueChanges();
+  ngOnInit() {
+    // this.membersCol = this.afs.collection('academy').doc('HYCUBE').collection('member');
+    // this.members = this.membersCol.valueChanges();
   }
+
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
