@@ -35,7 +35,7 @@ export class UserService {
     this.currentUser = new Observable(observer => this.auth.onAuthStateChanged(observer))
       .switchMap(data => {
         if (!data) {
-          return;
+          return Observable.of(new User());
         }
         console.log(data);
         return Observable.fromPromise(this.updateUser(data));
