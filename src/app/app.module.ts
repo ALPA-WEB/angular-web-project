@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import {NbAuthModule} from '@nebular/auth';
+// import {NbAuthModule} from '@nebular/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +22,6 @@ import {NbAuthModule} from '@nebular/auth';
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
-    NbAuthModule,
     NgbModule.forRoot(),
     ThemeModule.forRoot(),
     CoreModule.forRoot(),
