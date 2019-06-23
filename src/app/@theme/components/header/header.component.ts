@@ -12,7 +12,7 @@ import {User} from '../../../@core/data/user';
 
 export class HeaderComponent implements OnInit {
     @Input() position = 'normal';
-    user: User;
+    user: User = new User();
 
     userMenu = [
         {title: 'Log out'},
@@ -23,7 +23,10 @@ export class HeaderComponent implements OnInit {
               public userService: UserService,
               private analyticsService: AnalyticsService,
               ) {
-    this.user = userService.getCurrentUser();
+    userService.getCurrentUser().subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
   }
   /*
   login() {

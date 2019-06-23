@@ -1,4 +1,4 @@
-<ng-template *ngIf="user.email !==''; else guest">
+<ng-container *ngIf="user.email !=''; else guest">
   <div class="header-container"
        [class.left]="position === 'normal'"
        [class.right]="position === 'inverse'" style="flex-grow: 5">
@@ -18,7 +18,7 @@
                (menuClick)="userService.signOut()"></nb-user>
     </nb-action>
   </nb-actions>
-</ng-template>
+</ng-container>
 <!--인증안되었을 때-->
 <ng-template #guest>
   <div class="header-container" style="flex-grow: 5"
