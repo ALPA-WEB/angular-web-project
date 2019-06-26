@@ -10,12 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "favicon.png",
-        {
-          "glob": "**/*",
-          "input": "../node_modules/leaflet/dist/images",
-          "output": "./assets/img/markers"
-        }
+        "favicon.png"
       ],
       "index": "index.html",
       "main": "main.ts",
