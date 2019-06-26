@@ -1,4 +1,4 @@
-<div *ngIf="userService.user | async as user;" class="row">
+<div *ngIf="userService.getCurrentUser() | async as user;" class="row">
   <div class="col-lg-12">
     <nb-card>
       <nb-card-header>FIFO 공지사항</nb-card-header>
