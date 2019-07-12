@@ -7,47 +7,35 @@ import {User} from './user';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/fromPromise';
+import {FirebaseService} from '../../firebase.service';
 const counter = 0;
 
 @Injectable()
 export class UserService {
   private firebaseApp: firebase.app.App;
-  private db: firebase.firestore.Firestore;
-  private auth: firebase.auth.Auth;
-  private googleProvider: firebase.auth.GoogleAuthProvider;
   private currentUser: Observable<User>;
   private tempUser: Observable<User>;
   private userCol: firebase.firestore.CollectionReference;
 
-  constructor(private router: Router) {
-    console.log('init');
-    this.firebaseApp = firebase.initializeApp({
-      authDomain: 'forestvue-8424e.firebaseapp.com',
-      apiKey: 'AIzaSyC_bQgvZYtcQjwmmXR2I1YfyZLM7P1t9tQ',
-      projectId: 'forestvue-8424e',
-    });
-    this.db = this.firebaseApp.firestore();
-    this.auth = this.firebaseApp.auth();
-    this.googleProvider = new firebase.auth.GoogleAuthProvider();
-    this.userCol = this.db.collection('alpa-web')
+  constructor(private router: Router, private fs: FirebaseService) {
+    this.userCol = fs.getDB().collection('alpa-web')
       .doc('users')
       .collection('list');
-    this.currentUser = new Observable(observer => this.auth.onAuthStateChanged(observer))
+    this.currentUser = new Observable(observer => fs.getAuth().onAuthStateChanged(observer))
       .switchMap(data => {
         if (!data) {
           return Observable.of(new User());
         }
-        console.log(data);
         return Observable.fromPromise(this.updateUser(data));
       });
   }
 
   public login(data): void {
-    this.auth.signInWithEmailAndPassword(data.id, data.pw);
+    this.fs.login(data);
   }
 
   public googleLogin(): void {
-    this.auth.signInWithPopup(this.googleProvider);
+    this.fs.googleLogin();
   }
 
   public getCurrentUser(): Observable<User> {
@@ -64,7 +52,6 @@ export class UserService {
         resolveUser.uid = user.uid;
         resolveUser.email = user.email;
         resolveUser.displayName = user.displayName;
-        console.log(res.exists);
         if (res.exists) {
           const userData = res.data();
           resolveUser.ALPA = userData.ALPA;
@@ -106,6 +93,8 @@ export class UserService {
   }
 
   signOut(): void {
-    this.auth.signOut();
+    this.fs.signOut().then(() => {
+      this.router.navigate(['/']);
+    });
   }
 }
