@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {FirebaseService} from './firebase.service';
 // import {NbAuthModule} from '@nebular/auth';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   providers: [
+    FirebaseService,
     { provide: APP_BASE_HREF, useValue: '/' },
   ],
 })
