@@ -63,7 +63,7 @@
     "ng2-tree": "^2.0.0-alpha.10",
     "ngx-echarts": "1.2.2",
     "normalize.css": "6.0.0",
-    "node-sass": "4.8.1",
+    "node-sass": "4.14.1",
     "pace-js": "^1.0.2",
     "roboto-fontface": "0.8.0",
     "rxjs": "^5.4.2",
